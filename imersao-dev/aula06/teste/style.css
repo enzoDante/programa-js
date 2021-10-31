@@ -1,0 +1,54 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(76, 76, 161);
+    font-size: 1em;
+}
+main{
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    min-width: 200px;
+    max-width: 1100px;
+    min-height: 600px;
+    margin: auto;
+    border-radius: 20px;
+}
+#dv{
+    text-align: center;
+    margin: auto;
+    min-width: 50px;
+    max-width: 300px;
+    height: 350px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+}
+label{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+input{
+    font-size: 1em;
+    font-weight: bold;
+}
+#at, #defesa, #magia{
+    width: 50px;
+}
+
+
+button{
+    margin: 20px;
+    font-size: 2em;
+    border-radius: 5px;
+}
+p{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+img{
+    height: 150px;
+}

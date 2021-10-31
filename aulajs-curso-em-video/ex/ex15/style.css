@@ -1,0 +1,51 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(107, 107, 241);
+    font: normal 15pt Arial;
+}
+header{
+    color: white;
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+section{
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 200px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.322);
+    text-align: left;
+    font-size: 1.5em;
+}
+section p{
+    padding: 10px;
+}
+input{
+    font-size: 1em;
+    width: 100px;
+}
+button{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+footer{
+    padding-top: 50px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+
+}
+#res{
+    text-align: center;
+}
+#seltabuada{
+    font-size: 1em;
+    padding: 15px;
+}

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(to right,#B704D4, #9305F6);
+}
+header{
+    min-width: 300px;
+    height: 50px;
+    padding: 30px;
+    background-color: #9305F6;
+    text-align: center;
+}
+main{
+    min-width: 300px;
+    max-width: 700px;
+    height: 200px;
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.486);
+}
+#filme{
+    width: 400px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+p{
+    font-size: 25px;
+    font-weight: bold;
+}
+#botao{
+    margin-top: 30px;
+    height: 25px;
+    width: 100px;
+    border-radius: 7px;
+}
+article{
+    min-width: 300px;
+    max-width: 1000px;
+    min-height: 450px;
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px black;
+    text-align: center;
+}
+article img{
+    margin: 10px;
+    max-height: 250px;
+}

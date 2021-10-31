@@ -1,0 +1,1 @@
+usando POO, ele calcula os jogadores q são objetos etc

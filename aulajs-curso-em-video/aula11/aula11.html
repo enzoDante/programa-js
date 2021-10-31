@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições</title>
+
+    <style>
+        body{
+            background-color: rgb(65, 65, 175);
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Sistema de Multas!</h1>
+    <p align="center">
+        Velocidade do Carro: <input type="number" name="velo" id="velo">
+        <input type="button" value="Verificar..." onclick="calcular()">
+        <div id="res" align="center"></div>
+        <div id="pass" align="center"></div>
+    </p>
+    <script>
+        function calcular(){
+            var txtv = document.querySelector('input#velo')
+            var res = document.querySelector('div#res')
+            var pas = document.querySelector('div#pass')
+            var vel = Number(txtv.value)
+                if(vel >= 0){
+                    res.innerHTML = `Sua velocidade atual é de: <b>${vel}km/h</b>`
+                if(vel > 60){
+                    pas.innerHTML = 'Você deverá ser multador'
+                }
+                else{
+                    pas.innerHTML = 'Você não será multado!'
+                }
+            }else{
+                res.innerHTML = `Digite uma velocidade válida!!!`
+                pas.innerHTML = ""
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>

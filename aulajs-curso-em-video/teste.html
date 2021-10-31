@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de js</title>
+    <style>
+        body{
+            background-color: rgb(158, 158, 255);
+            color: white;
+            font: normal 25pt Arial;
+        }
+        h1{
+            color: rgba(231, 189, 2, 0.89);
+        }
+        h2, h3{
+            color: rgb(1, 1, 192);
+
+        }
+        h4{
+            color: rgb(129, 23, 228);
+            font: normal 15pt Arial;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1><p align="center">olá mundo!</p></h1>
+    <h2><p align="center">segunda linha teste de cor</p></h2>
+    <h3><p align="left">terceira linha teste de cor</p></h3>
+    <h4>testes de tamanho desta frase, depois criarei uma coluna</h4>
+    <hr/>  <!--hr serve p criar uma linha horizontal-->
+    <p align="center"><table width="1000" border="0">
+        <tr>
+            <td width="350" align="center">livre da maldição do começo</td>
+            <td width="250" align="center">teste de outro parágrafo</td>
+        </tr>
+    </table></p>
+    
+    <p align="center"><table width="1200" border="2">
+        <tr>
+            <td colspan="3" align="center"><h2>título desta tabela</h2></td>
+            <td width="350" align="right">demonstrarei as colunas</td>
+
+        </tr>
+        <tr>
+            <td width="200" align="right">testeee</td>
+            <td width="250" align="center"><h4>segundo testeee</h4></td>
+            <td width="255" align="left">terceiro teste</td>
+            <td width="200" align="center">abaixo de coluna</td>
+        </tr>
+
+    </table></p>
+
+
+    <script>
+        //comando null serve p remover coisas dentro de variáveis!!! (a1 = null)
+        //window.alert('primeira mensagem teste')
+        //window.confirm('gostou? testa mais')
+        var nome = window.prompt('qual é o seu nome?') //este comando serve p escrever (entrada)
+        window.alert('bem vindo ao primeiro site, ' + nome)
+        var n1 = Number(window.prompt('digite um número:'))
+        var n2 = Number(window.prompt('digite outro numero:'))
+        var soma = n1 + n2
+        window.alert(`a soma de ${n1} + ${n2} é ${soma}`)
+
+
+    </script>
+
+</body>
+</html>

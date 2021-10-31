@@ -1,0 +1,1 @@
+coloque um link de uma imagem e com js, ele irá mostrar na tela

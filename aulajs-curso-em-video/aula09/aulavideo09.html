@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ot-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usando DOM</title>
+    <style>
+        body{
+            background-color: rgb(165, 165, 250);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1><p align="center">iniciando estudo com DOM</p></h1>
+    <p>aqui vai o resultado!!!</p>
+    <p>aprendendo a usar <b>DOM</b> em js</p>
+    <div id="mensagem">clique em mim</div>
+    <script>
+        var p1 = document.getElementsByTagName('p')[2]
+        document.write('está escrito assim: '+p1.innerHTML)
+        p1.style.color = 'black'
+        /*
+        var testeid = document.getElementById('mensagem')
+        testeid.style.background = 'green'
+        testeid.innerText = 'mudei oq tava escrito'
+        */
+       var testes = document.querySelector('div#mensagem')
+       testes.style.color = 'blue'
+    </script>
+    
+</body>
+</html>
