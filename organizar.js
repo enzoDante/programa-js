@@ -1,4 +1,4 @@
-var grupo = ["Enzo","Gustavo","Samuel","Rafael"]
+var grupo = ["membro1","membro2","membro3","membro4"]
 var num = []
 var x = parseInt(Math.random()*4)+1
 for(var i in grupo){
