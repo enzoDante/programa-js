@@ -1,0 +1,56 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(to right, rgb(55, 55, 165), rgb(50, 41, 88));
+}
+header{
+    min-width: 200px;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(43, 135, 255);
+}
+main{
+    min-width: 200px;
+    max-width: 1500px;
+    min-height: 780px;
+    margin: auto;
+    background-color: rgb(223, 240, 255);
+}
+.imgs{
+    display: none;
+}
+img{
+    width: 100%;
+}
+#conjunto{
+    margin: auto;
+    min-width: 200px;
+    max-width: 1300px;
+}
+.num {
+    color: #f2f2f2;
+    font-size: 1.5em;
+    padding: 8px 12px;
+    position: absolute; /*absolute permite com q os num fique dentro das imagens!*/
+    /*top: 0; ----> não parece ser necessário, mas copiei :)
+    tirei por causa do header q adicionei!
+    */
+}
+.ponto{
+    width: 15px;
+    height: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active{
+    background-color: #717171;
+}
