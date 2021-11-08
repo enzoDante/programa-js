@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Tecla enter</h1>
+    </header>
+    <main>
+        <article>
+            <form action="#">
+                <h2 style="text-align: center;">Cadastro</h2>
+                <input type="text" name="" onkeypress="cad(event)" id="nome" placeholder="Nome:" autocomplete="off">
+                <input type="email" name="" onkeypress="cad(event)" id="email" placeholder="Email:" autocomplete="off">
+                <input type="password" name="" onkeypress="cad(event)" id="senha" placeholder="Senha:">
+                <input type="password" name="" onkeypress="cad(event)" id="senhar" placeholder="Repetir senha:">
+                <button type="submit" onclick="cadastro()">Cadastrar</button>
+            </form>
+        </article>
+        <div id="div">
+        </div>
+    </main>
+    <script src="script.js"></script>
+    
+</body>
+</html>
