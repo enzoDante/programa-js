@@ -8,8 +8,9 @@ function pesquisar(){
     
     for(let i = 0; i < ellista.length; i++){
         a = ellista[i].getElementsByTagName("a")[0]
+
         if(a.innerHTML.toUpperCase().indexOf(valor) > -1){
-            ellista[i].style.display = ""
+            ellista[i].style.display = ""//display padrão da tag!
         }else{
         ellista[i].style.display = "none"
         }
