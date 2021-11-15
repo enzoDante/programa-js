@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div id="d1">
+            <!--input para digitar-->
+            <div>
+                <input type="text" name="" id="texto" onchange="mudou()" placeholder="mudou">
+                <p>mudou?</p>
+            </div>
+            <div>
+                <input type="text" name="" id="texto2" onfocus="foco()" onblur="blurr()" placeholder="Foco e blur">
+                <p>foco blur?</p>
+            </div>
+            <div>
+                <input type="text" name="" id="texto3" onkeypress="enter(event)" placeholder="enter">
+                <p>enter?</p>
+            </div>
+            
+        </div>
+        <div id="d2">
+            <!--input radio-->
+            <input type="radio" name="r" id="r1" checked>
+            <label class="ll" for="r1">Radio1</label>
+
+            <input type="radio" name="r" id="r2">
+            <label class="ll" for="r2">Radio2</label>
+
+            <input type="radio" name="r" id="r3">
+            <label class="ll" for="r3">Radio3</label>
+
+            <button type="submit" onclick="enviar()">Botão</button>
+            <p>radio selecionado:</p><br>
+
+            <!--input checkbox-->
+            <input type="checkbox" name="b" id="b1">
+            <label class="ll2" for="b1">Aceito os termos1</label><br>
+
+            <input type="checkbox" name="b2" id="b2">
+            <label class="ll2" for="b2">Quero receber emails</label>
+            <button type="submit" onclick="enviar2()">Botão</button>
+            <p>caixas marcadas:</p><br>
+
+            <!--select-->
+            <select name="" id="sele" onchange="mudoo()">
+                <option value="o1">opção 01</option>
+                <option value="o2">opção 02</option>
+                <option value="o3">opção 03</option>
+                <option value="o4">opção 04</option>
+                <option value="o5">opção 05</option>
+            </select>
+            <button type="submit" onclick="enviar3()">Botão</button>
+            <p>Opção selecionada:</p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    min-width: 200px;
+    height: 100px;
+    background-color: blue;
+}
+main{
+    min-width: 200px;
+    max-width: 1500px;
+    margin: auto;
+    background-color: aquamarine;
+    min-height: 600px;
+    border-radius: 0 0 20px 20px;
+    font-size: 1.2em;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+main input{
+    font-size: 1.3em;
+}
+#d1{
+    border-style: solid;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+}
+#d2{
+    padding: 10px;
+    border-style: solid;
+    width: 500px;
+    height: 300px;
+}
