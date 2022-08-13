@@ -51,9 +51,6 @@ function mostrarPerfil(usuario){
         return div
     }
     return div
-    //favoritar farei mais tarde!!!
-    //let favoritar = document.createElement("a")
-    //favoritar.setAttribute("id", "favoritos")
 
 }
 function buscar(){

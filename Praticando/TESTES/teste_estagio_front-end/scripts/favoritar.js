@@ -10,7 +10,4 @@ function favoritos(login, pagina){
     }else{
         document.location.reload(true)
     }
-    /*else{
-        buscarTodos()
-    } */
 }

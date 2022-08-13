@@ -6,7 +6,7 @@ function Getrepo(re){
 
 }
 function mostrarRep(repositorio){
-    //console.log(repositorios)
+    
     let div = document.createElement("div")
     div.setAttribute("class", "caixa-repos")
     

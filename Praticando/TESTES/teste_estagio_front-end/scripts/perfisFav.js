@@ -26,12 +26,12 @@ function mostrarP(usuario){
     img.setAttribute("src", usuario.avatar_url)
     imgDiv.appendChild(img)
 
-    //verificar o localstorage!!!!
+    
     let favoritar = document.createElement("a")
     favoritar.setAttribute("onclick", "favoritos('"+usuario.login+"', 'f')")
     favoritar.setAttribute("class", "favoritos")
     let fav = document.createElement("img")
-    //se n ter favoritado ficara com estrela normal
+    
     let star = ""
     if(!localStorage.getItem(usuario.login)){
         star = "imagens/estrela.png"
