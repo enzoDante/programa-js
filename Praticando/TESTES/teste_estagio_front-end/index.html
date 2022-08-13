@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar perfil</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+    <header>
+        <h1>Buscar perfil GitHub</h1>
+    </header>
+    <nav>
+        <a href="#">Início</a>
+        <a href="favoritos.html">favoritos</a>
+    </nav>
+    <main>
+        <div id="busca">
+            <input type="search" name="" id="perfilBuscar" onkeypress="enter(event)" placeholder="Nome de login do usuário">
+            <button type="submit" onclick="buscar()">Buscar</button>
+        </div>
+        <!--abaixo aparece o usuário-->
+        <div id="perfil">
+
+        </div><h3>Repositórios</h3><hr>
+        <!--abaixo são seus repositórios-->
+        <div id="repositorios">
+
+        </div>
+    </main>
+    <script src="scripts/perfil.js"></script>
+    <script src="scripts/repos.js"></script>
+    <script src="scripts/favoritar.js"></script>
+</body>
+</html>

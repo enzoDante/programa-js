@@ -1,0 +1,157 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(218, 236, 252);
+}
+header{
+    text-align: center;
+    min-width: 200px;
+    min-height: 50px;
+    padding: 20px;
+    background-color: #35b0e9;
+    color: white;
+}
+nav{
+    background-color: #35b0e9;
+    min-width: 200px;
+    min-height: 10px;
+    padding: 10px;
+}
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    margin: 10px;
+    transition: linear 200ms;
+}
+nav a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #c0c0c0;
+}
+main{
+    min-width: 300px;
+    max-width: 1200px;
+    min-height: 500px;
+    margin: auto;
+    background-color: white;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    padding: 30px;
+    border-radius: 20px;
+}
+/*busca*/
+#busca{
+    text-align: center;
+    margin-bottom: 5vh;
+}
+input[type=search], button{
+    padding: 8px 12px;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid black;
+    font-size: 1.1em;
+    transition: linear 200ms;
+}
+input[type=search]:focus{
+    border-color: #3574e9;
+}
+button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(148, 148, 148);
+}
+/*perfil*/
+#perfil{
+    border: 2px solid black;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 3vh;
+    border-radius: 10px;
+    display: none;
+}
+#imgPerfil{
+    width: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px;
+}
+#imgPerfil img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    
+}
+.linkgithub{
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: linear 200ms;
+}
+.linkgithub:hover{
+    text-decoration: underline;
+    color: #525252;
+}
+#bio{
+    display: inline-block;
+}
+.favoritos{
+    display: inline-block;
+    margin-right: 20px;
+}
+.favoritos img:hover{
+    cursor: pointer;
+}
+/*repositório*/
+#repositorios{
+    display: grid;
+    grid-template-columns: 500px 450px;
+    justify-content: center;
+}
+.caixa-repos{
+    max-width: 400px;
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.caixa-repos p{
+    margin: 10px;
+}
+@media screen and (max-width: 1000px){
+    #repositorios{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .caixa-repos{
+        width: 100%;
+    }
+}
+/*página favoritos*/
+#perfils{
+    display: grid;
+    grid-template-columns: 400px 400px;
+    justify-content: center;
+}
+.caixa-perfis{
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+@media screen and (max-width: 800px){
+    #perfils{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .caixa-perfis{
+        width: 100%;
+    }
+}
