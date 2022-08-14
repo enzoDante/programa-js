@@ -1,10 +1,12 @@
 function fazGet(re){
+    //permite o usu da api
     let request = new XMLHttpRequest()
     request.open("GET", re, false)
     request.send()
     return request.responseText
 }
 function mostrarP(usuario){
+    /*está adicionando os perfis favoritados, igual o arquivo perfil.js, porém, como pode ser mais de um perfil, irá funcionar como o arquivo repos.js, usando o foreach*/
     let div = document.createElement("div")
     div.setAttribute("class", "caixa-perfis")
 
@@ -50,16 +52,22 @@ function mostrarP(usuario){
     return div
 }
 function buscarTodos(){
+    //recebendo todos os valores do locastorage
     const keys = Object.keys(localStorage);
     console.log(keys);
 
+    //div onde irá aparecer todos os perfis
     let perfis = document.getElementById("perfils")
     if(keys != ''){
-        keys.forEach(element =>{
 
+        //verifica se existe elementos e percorrerá por todos os login
+        keys.forEach(element =>{
+            
+            //fazendo a requisição de cada url dos perfis favoritados
             let data = fazGet("https://api.github.com/users/" + element)
             let usuario = JSON.parse(data)
 
+            //funciona como o arquivo repos.js
             let mostrar = mostrarP(usuario)
             perfis.appendChild(mostrar)
 
