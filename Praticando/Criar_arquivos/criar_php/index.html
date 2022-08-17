@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar php</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Preenche os campos para gerar o php com sql</h1>
+    </header>
+    <main>
+        <input type="text" name="" id="nome_arquivo" placeholder="arquivo.php">
+        <!--gerar arquivo-->
+        <button type="submit" onclick="arquivo()">Gerar</button>
+
+        <!--abaixo os tipos de gerar código em arquivo php-->
+        <div class="divs">
+            <input type="checkbox" class="caixa" id="inserir" value="insert">
+            <label for="inserir">
+                <div>
+                    <h3>PHP inserir na tabela</h3>
+                    <input type="text" name="" id="colunas_inserir" placeholder="col1, col2, col3">
+                    <input type="text" name="" id="tabela_inserir" placeholder="tabelaA">
+                </div>
+            </label>
+        </div>
+        <!--==========-->
+        <div class="divs">
+            <input type="checkbox" class="caixa" id="selecionar" value="selectw">
+            <label for="selecionar">
+                <div>
+                    <h3>PHP selecionar tabela (WHERE)</h3>
+                    <input type="text" name="" id="colunas_selecionar" placeholder="tabelaA.col1, col2, col3">
+                    <input type="text" name="" id="tabela_selecionar" placeholder="tabelaA, tabelaB"><br>
+                    <input type="text" name="" id="where_selecionar" placeholder="id_A = id_B AND (nome = user)">
+                </div>
+            </label>
+        </div>
+        <!--==========-->
+        <div class="divs">
+            <input type="checkbox" class="caixa" id="remover" value="remove">
+            <label for="remover">
+                <div>
+                    <h3>PHP Remover linha da tabela</h3>
+                    <input type="text" name="" id="tabela_remover" placeholder="tabelaA, tabelaB">
+                    <input type="text" name="" id="where_remover" placeholder="id_A = id_B">
+                </div>
+            </label>
+        </div>
+        <!--==========-->
+        <div class="divs">
+            <input type="checkbox" class="caixa" id="atualizar" value="update">
+            <label for="atualizar">
+                <div>
+                    <h3>PHP Atualizar tabela</h3>
+                    <input type="text" name="" id="colunas_atualizar" placeholder="tabelaA.col1, col2, col3">
+                    <input type="text" name="" id="tabela_atualizar" placeholder="tabelaA, tabelaB"><br>
+                    <input type="text" name="" id="where_atualizar" placeholder="id_A = id_B">
+                </div>
+            </label>
+        </div>
+        <!--==========-->
+        <div class="divs">
+            <input type="checkbox" class="caixa" id="selecionarj" value="selectj">
+            <label for="selecionarj">
+                <div>
+                    <h3>PHP selecionar tabela (JOIN)</h3>
+                    <input type="text" name="" id="colunas_selecionarj" placeholder="tabelaA.col1, col2, col3">
+                    <select name="" id="joins">
+                        <option value="1">INNER JOIN</option>
+                        <option value="2">LEFT JOIN</option>
+                        <option value="3">RIGHT JOIN</option>
+                    </select>
+                    <input type="text" name="" id="tabela_selecionarj" placeholder="tabelaA tabelaB"><br>
+                    <input type="text" name="" id="where_selecionarj" placeholder="id_A = id_B">
+                </div>
+            </label>
+        </div>
+
+
+
+    </main>
+    <script src="scripts/gerar.js"></script>
+</body>
+</html>

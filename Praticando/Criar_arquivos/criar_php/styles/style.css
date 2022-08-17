@@ -1,0 +1,74 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #202020;
+    color: white;
+}
+header{
+    min-width: 200px;
+    min-height: 50px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(52, 52, 114);
+}
+main{
+    min-width: 200px;
+    max-width: 1500px;
+    min-height: 500px;
+    margin: auto;
+    padding: 30px;
+    background-image: linear-gradient(to bottom, #3d3d3d, #252424);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.603);
+}
+#nome_arquivo{
+    display: block;
+    margin: auto;
+}
+main input[type=checkbox]{
+    display: inline-block;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.divs{
+    margin-top: 1vh;
+    display: inline-block;
+    max-width: 1000px;
+    background-image: linear-gradient(to bottom, #535353, #2c2c2c);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    /*vertical-align: middle;*/
+}
+main label{
+    display: inline-block;
+    padding: 10px;
+}
+input[type=text]{
+    font-size: 1em;
+    padding: 5px;
+    width: 300px;
+}
+select{
+    padding: 5px;
+}
+button{
+    font-size: 1.1em;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    float: right;
+    cursor: pointer;
+    transition: linear 200ms;
+}
+button:hover{
+    background-color: gray;
+    color: white;
+}
