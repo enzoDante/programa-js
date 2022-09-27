@@ -1,0 +1,23 @@
+html, body{
+    margin: 5px;
+    padding: 5px;
+    background-color: #252539;
+    min-height: 80px;
+  }
+  
+  div{
+    display: flex;
+    justify-content: center;
+  }
+  
+  button{
+    background-color: #e93e8b;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: #d2387d;
+  }
