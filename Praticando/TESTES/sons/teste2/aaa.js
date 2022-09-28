@@ -1,41 +1,42 @@
 const stopButton1 = document.querySelector('#stopButton1'),
-  stopButton2 = document.querySelector('#stopButton2'),
-  stopButton3 = document.querySelector('#stopButton3'),
-  stopButton4 = document.querySelector('#stopButton4'),
-  stopButton5 = document.querySelector('#stopButton5'),
-  stopButton6 = document.querySelector('#stopButton6'),
-  stopButton7 = document.querySelector('#stopButton7');
+stopButton2 = document.querySelector('#stopButton2'),
+stopButton3 = document.querySelector('#stopButton3'),
+stopButton4 = document.querySelector('#stopButton4'),
+stopButton5 = document.querySelector('#stopButton5'),
+stopButton6 = document.querySelector('#stopButton6'),
+stopButton7 = document.querySelector('#stopButton7');
   
 const c4 = 261.6,
-	d4 = 293.7,
-  e4 = 329.6,
-  f4 = 349.2,
-  g4 = 392.0,
-  a4 = 440.0,
-  b4 = 493.9;
+d4 = 293.7,
+e4 = 329.6,
+f4 = 349.2,
+g4 = 392.0,
+a4 = 440.0,
+b4 = 493.9;
 
   	
 let context,
-	oscillator,
-  contextGain,
-  x = 1,
-  type = 'sine',
-  frequency;
-
+oscillator,
+contextGain,
+x = 1,
+type = 'sine',
+frequency;
+  
+//context.allow = 'autoplay'
 context = new AudioContext();
 function start(){
-	oscillator = context.createOscillator();
-    contextGain = context.createGain();
-    oscillator.frequency.value = frequency;
-    oscillator.type = type;
-    oscillator.connect(contextGain);
-	contextGain.connect(context.destination);
-	oscillator.start(0);
+  oscillator = context.createOscillator();
+  contextGain = context.createGain();
+  oscillator.frequency.value = frequency;
+  oscillator.type = type;
+  oscillator.connect(contextGain);
+  contextGain.connect(context.destination);
+  oscillator.start(0);
 }
 
 function stop(){
-  start();
-  contextGain.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + x)
+    start();
+    contextGain.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + x)
 }
 function c(){
     frequency = c4;
