@@ -11,7 +11,7 @@ function cad(){
     let valor = validar(nome, nota1, nota2, nota3, nota4)
     if(valor == 0){
         alunos.push(nome)
-        let nota = (nota1+nota2+nota3+nota4)/4
+        let nota = Number((nota1+nota2+nota3+nota4)/4) //n calcula a nota
         media.push(nota)
         console.log(alunos)
         console.log(media)
