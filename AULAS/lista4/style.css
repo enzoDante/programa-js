@@ -53,3 +53,6 @@ button:hover{
     text-align: center;
     background-color: rgb(122, 122, 122);
 }
+.n{
+    display: inline-block;
+}

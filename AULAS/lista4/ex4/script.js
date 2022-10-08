@@ -3,18 +3,26 @@ let alunos = Array()
 let media = Array()
 function cad(){
     let nome = document.getElementById("nome").value 
-    let nota1 = document.getElementById("nota1").value
-    let nota2 = document.getElementById("nota2").value
-    let nota3 = document.getElementById("nota3").value
-    let nota4 = document.getElementById("nota4").value 
+    let nota1 = Number(document.getElementById("nota1").value)
+    let nota2 = Number(document.getElementById("nota2").value)
+    let nota3 = Number(document.getElementById("nota3").value)
+    let nota4 = Number(document.getElementById("nota4").value) 
 
     let valor = validar(nome, nota1, nota2, nota3, nota4)
     if(valor == 0){
+        let select = document.getElementById("valores")
+        let op = document.createElement("option")
+
+        let nota = (nota1+nota2+nota3+nota4)/4
         alunos.push(nome)
-        let nota = Number((nota1+nota2+nota3+nota4)/4) //n calcula a nota
         media.push(nota)
-        console.log(alunos)
-        console.log(media)
+
+        // console.log(alunos)
+        // console.log(media)
+        
+        op.innerHTML = nome
+        op.value = nota
+        select.appendChild(op)
     }
 
 }
@@ -64,4 +72,21 @@ function validar(nome, n1,n2,n3,n4){
     return valido
 
 
+}
+function aluno(){
+    let tabela = document.getElementById("tabela")
+    tabela.innerHTML = ""
+
+    let p = document.createElement("p")
+    let select = document.getElementById("valores")
+    
+    let media = select.value
+    let aluno = select.options[select.selectedIndex].text
+
+    p.innerHTML = `Aluno: ${aluno} --> Média: ${media}`
+    if(media < 6)
+        p.innerHTML += "<br>Exame!"
+    else
+        p.innerHTML += "<br>Passou!"
+    tabela.appendChild(p)
 }
