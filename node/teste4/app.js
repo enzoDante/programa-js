@@ -2,12 +2,15 @@ const express = require("express") //retorna função p criar o express
 const app = express()//recebe função express criando uma cópia do framework
 
 //pegando a rota principal da aplicação
+//res.send("Seja bem vindo ao meu app xD")//envia uma mensagem
 app.get("/", function(req, res){ //function é callback!
-    res.send("Seja bem vindo ao meu app xD")//envia uma mensagem
+    //__dirname retorna o diretório padrão da aplicação, no meu caso:
+    //D:\codigo-vscode\programa-js\node\teste4
+    res.sendFile(__dirname + "/sites/index.html")//mandar um arquivo
 })
 //outras rotas q n é a principal "/"
 app.get("/sobre", function(req, res){
-    res.send("outra pagina :D")
+    res.sendFile(__dirname + "/sites/sobre.html")
 })
 app.get("/blog", function(req, res){
     res.send("mais uma pagina, agr blog :D")
