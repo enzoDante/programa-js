@@ -5,7 +5,7 @@ app.use(express.static('public'))
 const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 //==========================================================================
-// const handlebars = require('express-handlebars')
+const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 //conexao mysql
 const conn = require('./bd')
@@ -13,19 +13,20 @@ const conn = require('./bd')
 //deve configurar o handlebars, para usar o template engine
 //Config
     //Template Engine
-    //     app.engine('handlebars', handlebars.engine({defaultLayout: 'main',
-    //         runtimeOptions: {
-    //             allowProtoPropertiesByDefault: true,
-    //             allowProtoMethodsByDefault: true
-    //         }}))
-    //     app.set('view engine', 'handlebars')
-    // //Body Parser
+        app.engine('handlebars', handlebars.engine({defaultLayout: 'main',
+            runtimeOptions: {
+                allowProtoPropertiesByDefault: true,
+                allowProtoMethodsByDefault: true
+            }}))
+        app.set('view engine', 'handlebars')
+    //Body Parser
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())
 
 //Rotas
     app.get('/', function(req, res){ //rota principal, pois só tem '/'
-        res.sendFile(__dirname + '/public/front/index.html')
+        //res.sendFile(__dirname + '/public/front/index.html')
+        res.render('index')
     })
 
     app.get('/outro', function(req, res){
@@ -33,7 +34,8 @@ const conn = require('./bd')
         let sql = "SELECT * FROM postagens"
         conn.query(sql, function(err, result, fields){
             console.log(result)
-            res.send(result)
+            res.render('outro', {valorrr: result})
+            //res.send(result)
         })
         //res.sendFile(__dirname + '/public/front/outro.html')
 
