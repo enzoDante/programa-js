@@ -25,8 +25,8 @@ const conn = require('./bd')
 
 //Rotas
     app.get('/', function(req, res){ //rota principal, pois só tem '/'
-        //res.sendFile(__dirname + '/public/front/index.html')
-        res.render('index')
+        res.sendFile(__dirname + '/front/index.html')
+        //res.render('index')
     })
 
     app.get('/outro', function(req, res){
@@ -34,8 +34,8 @@ const conn = require('./bd')
         let sql = "SELECT * FROM postagens"
         conn.query(sql, function(err, result, fields){
             //console.log(result)
-            res.render('outro', {valorrr: result})
-            //res.send(result)
+            //res.render('outro', {valorrr: result})
+            res.send(result)
         })
         //res.sendFile(__dirname + '/public/front/outro.html')
 
