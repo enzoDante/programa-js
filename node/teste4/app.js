@@ -8,7 +8,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const Post = require('./models/Posts')
-const { Sequelize } = require("./models/db")
+// const { Sequelize } = require("./models/db")
 
 //deve configurar o handlebars, para usar o template engine
 //Config
