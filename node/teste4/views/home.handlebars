@@ -1,0 +1,15 @@
+<header>
+    <h1>pagina principal</h1>
+</header>
+<main>
+    <h2>Posts</h2>
+{{!-- comentário do handlebars --}}
+{{!-- dentro do bloco each, vc coloca as colunas que deseja 
+    lembre-se, caso os valores da coluna tenha tags html exemp: '<br>'
+    utilize '{{{exemplo}}}' 3 chaves p mostrar a formatação do html
+--}}
+    {{#each teste}}
+        <h2>{{titulo}}</h2>
+        <p>{{conteudo}}</p><br><hr>
+    {{/each}}
+</main>
