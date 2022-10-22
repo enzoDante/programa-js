@@ -33,7 +33,7 @@ const conn = require('./bd')
         //res.render('formulario')//exibir o arquivo do handlebars
         let sql = "SELECT * FROM postagens"
         conn.query(sql, function(err, result, fields){
-            console.log(result)
+            //console.log(result)
             res.render('outro', {valorrr: result})
             //res.send(result)
         })
@@ -58,7 +58,7 @@ const conn = require('./bd')
         x = x * 2
         let sql = `INSERT INTO postagens (titulo, conteudo) VALUES ('${nome}', ${x})`
         conn.query(sql, function(err, result, fields){
-            console.log(result)
+            //console.log(result)
             //res.sendFile(__dirname+"/public/front/outro.html")
             res.redirect('/outro')
         })
