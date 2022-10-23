@@ -5,20 +5,20 @@ app.use(express.static('public'))
 const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 //==========================================================================
-const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
+//======sessões de login=========
+const session = require('express-session')
 //conexao mysql
 const conn = require('./bd')
 
 //deve configurar o handlebars, para usar o template engine
 //Config
-    //Template Engine
-        app.engine('handlebars', handlebars.engine({defaultLayout: 'main',
-            runtimeOptions: {
-                allowProtoPropertiesByDefault: true,
-                allowProtoMethodsByDefault: true
-            }}))
-        app.set('view engine', 'handlebars')
+    //express-session
+        app.use(session({
+            secret: 'asd',
+            resave: true,
+            saveUninitialized: true
+        }))
     //Body Parser
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())
@@ -26,19 +26,71 @@ const conn = require('./bd')
 //Rotas
     app.get('/', function(req, res){ //rota principal, pois só tem '/'
         res.sendFile(__dirname + '/front/index.html')
-        //res.render('index')
     })
+    //========================================================
+        app.get('/outro', function(req, res){
+            //res.render('formulario')//exibir o arquivo do handlebars
+            let sql = "SELECT * FROM usuarios"
+            conn.query(sql, function(err, result, fields){
+                //console.log(result)
+                //res.render('outro', {valorrr: result})
+                res.send(result)
+            })
+            //res.sendFile(__dirname + '/public/front/outro.html')
 
-    app.get('/outro', function(req, res){
-        //res.render('formulario')//exibir o arquivo do handlebars
-        let sql = "SELECT * FROM postagens"
-        conn.query(sql, function(err, result, fields){
-            //console.log(result)
-            //res.render('outro', {valorrr: result})
-            res.send(result)
         })
-        //res.sendFile(__dirname + '/public/front/outro.html')
+        app.get('/todos', function(req, res){
+            res.sendFile(__dirname + '/front/todos.html')
+        })
+        
+        app.get('/verificar', function(req, res){
+            
+            // req.session.destroy(function(err) {
+            //     // cannot access session here
+            // })
+            res.send(req.session.usuario)
+            // if(req.session.usuario){
+            //     res.send(req.session.usuario)
+            // }
+        })
+    //========================================================
+        app.get('/sair', function(req, res){
+            req.session.destroy()
+            res.redirect('/login')
+        })
+        app.get('/login', function(req,res){
+            if(!req.session.login)
+                res.sendFile(__dirname+"/front/login.html")
+            else
+                res.redirect('/todos')
+        })
+        app.post('/logar', function(req, res){
+            let nome = req.body.nome
+            let senha = req.body.senha
+            let sql = `SELECT * FROM usuarios WHERE nome='${nome}' AND senha='${senha}'`
 
+            conn.query(sql, function(err, result, fields){
+                if(result != ""){
+                    console.log(result[0].id)
+                    req.session.usuario = `${result[0].id}`
+                    res.redirect('/todos')
+                }
+                else
+                    console.log("hmm teste")
+            })
+        })
+    //========================================================
+    app.get('/criarpagina', function(req, res){
+        res.sendFile(__dirname+"/front/cadastro.html")
+    })
+    app.post('/criar', function(req, res){
+        let nome = req.body.nome
+        let email = req.body.email
+        let senha = req.body.senha
+        let sql = `INSERT INTO usuarios (nome, email, senha) VALUES ('${nome}','${email}','${senha}')`
+        conn.query(sql, function(){
+            res.redirect('/todos')
+        })
     })
 
     app.post('/teste', function(req, res){
@@ -65,6 +117,6 @@ const conn = require('./bd')
         //res.send('form recebido :)<br> nome: '+nome+" "+x)
     })
 
-app.listen(8081, function(){
-    console.log("Servidor rodando em http://localhost:8081 :)")
+app.listen(8084, function(){
+    console.log("Servidor rodando em http://localhost:8084 :)")
 })//porta para rodar a aplicação, deve ser a última linha do código!!!
