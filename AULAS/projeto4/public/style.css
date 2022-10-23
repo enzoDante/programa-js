@@ -1,0 +1,94 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: antiquewhite;
+}
+header{
+    min-width: 200px;
+    min-height: 40px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background-color: #ce6a6a;
+}
+nav{
+    min-width: 200px;
+    min-height: 20px;
+    padding: 10px;
+    background-color: #ce6a6a;
+    color: white;
+}
+nav a{
+    font-size: 1.1em;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: linear 200ms;
+}
+nav a:hover{
+    color: #ce6a6a;
+    background-color: azure;
+    border-radius: 5px;
+}
+main{
+    min-width: 200px;
+    max-width: 1200px;
+    min-height: 500px;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 5vh;
+    box-shadow: 2px 2px 5px black;
+    padding: 30px;
+}
+form{
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+form a{
+    color: #ce6a6a;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px;
+    transition: linear 200ms;
+}
+form a:hover{
+    border-bottom-style: solid;
+    border-width: 5px;
+    border-color: #ce6a6a;
+}
+label{
+    display: block;
+    margin-top: 2vh;
+    font-size: 1.2em;
+}
+input[type=text], input[type=password], input[type=email]{
+    font-size: 1.1em;
+    padding: 5px;
+    width: 100%;
+}
+form .requerido{
+    display: none;
+    color: red;
+    font-size: 1em;
+}
+button{
+    display: block;
+    margin: auto;
+    padding: 7px;
+    font-size: 1.2em;
+    background-color: azure;
+    margin-top: 3vh;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: linear 200ms;
+}
+button:hover{
+    background-color: rgb(191, 204, 204);
+}

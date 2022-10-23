@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/cadastro">Cadastrar</a>
+    </nav>
+    <main>
+        <form action="/loginC" method="post" id="ff" autocomplete="off">
+            <label for="email">E-mail:</label>
+            <input type="email" onkeyup="emaillogin()" name="email" id="email">
+            <p id="ee" class="requerido"></p>
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" onkeyup="senhaa()">
+            <p id="ss" class="requerido">Preenche o campo!</p>
+
+            <button type="submit" onclick="logar(event)">Logar</button>
+        </form>
+    </main>
+    <script src="ajax.js"></script>
+    <script src="verificaremail.js"></script>
+    <script src="validar.js"></script>
+    
+</body>
+</html>
