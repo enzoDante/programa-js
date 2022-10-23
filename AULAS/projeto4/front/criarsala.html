@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="salas.css">
+</head>
+<body onload="logado('salas')">
+    <header>
+        <h1>Salas</h1>
+    </header>
+    <nav id="nav">
+        <a href="/cadastro" class="cadastrologin">Cadastrar</a>
+        <a href="/login" class="cadastrologin">Login</a>
+    </nav>
+    <main id="main">
+        <form id="ff" action="/criarSalaC" method="post" autocomplete="off">
+            <label for="nome">Nome da sala:</label>
+            <input type="text" name="nome" id="nome" onkeyup="nomesala()">
+            <p class="requerido" id="mm">Digite um nome válido!</p>
+
+            <button type="submit" onclick="criarsala(event)">Criar sala</button>
+        </form>
+
+    </main>
+    <script src="ajax.js"></script>
+    <script src="usuariologado.js"></script>
+    <script src="salas.js"></script>
+    <script src="validar.js"></script>
+    
+</body>
+</html>

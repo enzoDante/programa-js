@@ -30,6 +30,12 @@ function logado(v){
         a2.innerHTML = "Criar sala"
         a2.setAttribute("id", "criarsala")
         nav.appendChild(a2)
+        //opcao de procurar sala
+        let a3 = document.createElement("a")
+        a3.href = "/procurarSala"
+        a3.innerHTML = "Buscar"
+        a3.setAttribute("id", "buscarsala")
+        nav.appendChild(a3)
         //===============================================
 
         let main = document.getElementById("main")
@@ -56,6 +62,18 @@ function logado(v){
                 a.innerHTML = "Voltar"
                 h1.appendChild(a)
                 main.appendChild(h1)
+            }else{
+                if(v=='salas'){
+                    document.getElementById("criarsala").style.display = "none"
+                }else{
+                    if(v== 'bsalas'){
+                        document.getElementById("buscarsala").style.display = "none"
+                    }else{
+                        if(v=='index'){
+                            carregarsalas()
+                        }
+                    }
+                }
             }
         }
     }
@@ -81,6 +99,32 @@ function logado(v){
             a.innerHTML = "Criar conta"
             h1.appendChild(a)
             main.appendChild(h1)
+        }else{
+            if(v == 'salas'){
+                let main = document.getElementById("main")
+                main.style.textAlign = "center"
+                main.innerHTML = ""
+                let h1 = document.createElement("h1")
+                h1.innerHTML = "Você não está logado! "
+                let a = document.createElement("a")
+                a.href = "/cadastro"
+                a.innerHTML = "Criar conta"
+                h1.appendChild(a)
+                main.appendChild(h1)
+            }else{
+                if(v == 'bsalas'){
+                    let main = document.getElementById("main")
+                    main.style.textAlign = "center"
+                    main.innerHTML = ""
+                    let h1 = document.createElement("h1")
+                    h1.innerHTML = "Você não está logado! "
+                    let a = document.createElement("a")
+                    a.href = "/cadastro"
+                    a.innerHTML = "Criar conta"
+                    h1.appendChild(a)
+                    main.appendChild(h1)
+                }
+            }
         }
         // document.getElementById("sair").style.display = "none"
     }

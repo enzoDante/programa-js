@@ -30,6 +30,83 @@ const session = require('express-session')
 //variaveis globais
     let sql = "", nome="", email="",senha="", id="", msg=""
 
+//salas
+    //criar salas======
+    app.post('/criarSalaC', function(req,res){
+        let nome = req.body.nome
+        let sql = `INSERT INTO salas (nomes, id_criador) VALUES('${nome}',${req.session.usuario})`
+        conn.query(sql, function(err, result){
+            res.redirect('/')
+        })
+    })
+    app.get('/criarSala', function(req, res){
+        res.sendFile(__dirname+"/front/criarsala.html")
+    })
+    //=====salas onde estou====
+    app.get('/minhassalas', function(req, res){
+        let where = `id_criador=${req.session.usuario}`
+        //SELECT * FROM salas, salaxusuario WHERE ${where}  OR idu=${req.session.usuario}
+        let sql = `SELECT * FROM salas WHERE ${where}`
+        conn.query(sql, function(err, result){
+            let um = result
+            // console.log(um)
+
+            let v = `idu=${req.session.usuario} and ids=id_sala`
+            let sql1 = `select * from salas, salaxusuario where ${v}`
+            conn.query(sql1, function(err, result){
+                let dois = result
+                // console.log(dois)
+                let salas = um.concat(dois)
+                res.send(salas)
+            })
+
+
+        })
+        
+    })
+    //entrar em sala
+    app.get('/entrarSala/:i', function(req, res){
+        let i = req.params.i
+        //recebe sala do parametro
+        let sql2 = `SELECT * from salas WHERE id_sala=${i}`
+        conn.query(sql2, function(err, result){
+            //verifica caso o criado seja o usuario logado
+            if(result[0].id_criador != req.session.usuario){
+                //se n for, verifica se ele ja esta na tabela salaxusuario
+                let sql = `SELECT * FROM salaxusuario where idu=${req.session.usuario} and ids=${i}`
+                conn.query(sql, function(err, result){
+                    
+                    if(result[0]){
+                        console.log("existe")
+                    }else{
+                        //caso n esteja na sala da tabela salaxusuario ele entra na sala
+                        let sql1 = `INSERT INTO salaxusuario(idu, ids) VALUES(${req.session.usuario}, ${i})`
+                        conn.query(sql1, function(err, result){
+                            // res.redirect('/')
+                        })
+                    }
+                })
+                
+            }
+        })
+        res.redirect('/')
+
+
+    })
+
+    //procurar sala
+    app.get('/procurarSalaC/:sa', function(req, res){
+        let sa = req.params.sa
+        let sql = `SELECT * FROM salas WHERE nomes LIKE '%${sa}%' `
+        conn.query(sql, function(err, result){
+            console.log(result)
+            res.send(result)
+        })
+    })
+    app.get('/procurarSala', function(req, res){
+        res.sendFile(__dirname+"/front/salas.html")
+    })
+
 //cadastro
     app.get('/cadastro', function(req, res){
         res.sendFile(__dirname+"/front/cadastro.html")
@@ -78,6 +155,16 @@ const session = require('express-session')
     })
 
 //verificar valores (ajax)
+    //retorna sala caso existe
+    app.get("/salaexiste/:n", function(req, res){
+        let nome = req.params.n
+        let sql = `SELECT * FROM salas WHERE nomes='${nome}'`
+        conn.query(sql, function(err, result){
+            console.log(result)
+            res.send(result[0])
+        })
+    })
+
     //retornar nome de usuario
     app.get('/nome', function(req, res){
         let sql = `SELECT nome FROM usuarios WHERE id_usu=${req.session.usuario}`

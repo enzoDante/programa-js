@@ -138,3 +138,31 @@ function logar(e){
     }
 
 }
+//==============nome de sala==========================
+function nomesala(v){
+    let nome = document.getElementById("nome").value 
+    if(nome == "" || nome.length < 5){
+        document.getElementById("mm").style.display = "block"
+        document.getElementById("mm").innerHTML = "Digite um nome válido!"
+        if(v==1){
+            return false
+        }
+    }else{
+        document.getElementById("mm").style.display = "none"
+        //salaexistente(nome)
+        if(v == 1){
+            return true
+        }
+    }
+}
+function criarsala(e){
+    e.preventDefault()
+    let form = document.getElementById("ff")
+
+    let ver = nomesala(1)
+    if(ver){
+        let nome = document.getElementById("nome").value 
+        salaexistente(nome, form)
+    }
+
+}
