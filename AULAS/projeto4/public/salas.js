@@ -8,23 +8,30 @@ function salaexistente(nome, form){
         document.getElementById("mm").innerHTML = "Sala existente, digite outro nome!"
     }
 }
-
+//cada sala será criada
 function ordemsalas(el){
     let h3 = document.createElement("h3")
     let a1 = document.createElement("a")
     a1.setAttribute("class", 'sala')
     a1.innerHTML = `${el.nomes} |`
-    a1.href = `/chat/${el.id_sala}`
+    let x = `/chat/${el.id_sala}`
+    
+    a1.setAttribute("onclick", `entrarNaSala('${x}', ${el.id_sala})`)
+    // a1.href = `/chat/${el.id_sala}`
     
     let a2 = document.createElement("a")
     a2.innerHTML = "Sair"
-    a2.href = `/sairchat/${el.id_sala}`
+    x = `/sairchat/${el.id_sala}`
+
+    a2.setAttribute("onclick", `sairdasala('${x}', ${el.id_sala})`)
+    // a2.href = `/sairchat/${el.id_sala}`
 
     h3.appendChild(a1)
     h3.appendChild(a2)
     return h3
 
 }
+//mostra as salas criadas acima
 function carregarsalas(){
     let data = fazGet("http://localhost:8081/minhassalas")
     console.log(data)
@@ -60,4 +67,48 @@ function procurar(){
             salasbusca.appendChild(h3)
         })
     }
+}
+//==========entra em bate papo========
+function entrarNaSala(x, i){
+    let data = fazGet(x)
+    console.log(data)
+
+    let main = document.getElementById("chatmsg")
+    main.innerHTML = ""
+    let valores = JSON.parse(data)
+    if(valores){
+        valores.forEach(el => {
+            let hr = document.createElement("hr")
+            main.appendChild(hr)
+            let div = document.createElement("div")
+            div.setAttribute("class", 'comentarios')
+
+            let h1 = document.createElement("h1")
+            h1.innerHTML = el.nomeusu
+            let p = document.createElement("p")
+            p.innerHTML = el.msg
+            div.appendChild(h1)
+            div.appendChild(p)
+            main.appendChild(div)
+        })
+    }
+
+    let form = document.getElementById("ff")
+    form.setAttribute("action","/enviarmsg/"+i)
+
+    let btn = document.getElementById("btnenviarmsg")
+    btn.setAttribute("onclick", `enviarmsgg(event,${i})`)
+
+}
+function enviarmsgg(e, i){
+    e.preventDefault()
+    let form = document.getElementById("ff")
+    let msg = document.getElementById("texto").value 
+    console.log(msg)
+    form.submit()
+    // console.log(i)
+
+    // let data = fazGet(`http://localhost:8081/enviarmsg/${i}/'${msg}'`)
+    // console.log(data)
+
 }

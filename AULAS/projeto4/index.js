@@ -90,8 +90,34 @@ const session = require('express-session')
             }
         })
         res.redirect('/')
+    })
+    //entra em determinada sala p conversar
+    app.get('/chat/:i', function(req, res){
+        let i = req.params.i
+        let sql = `SELECT * from msgs WHERE id_sala=${i}`
+        conn.query(sql, function(err, result){
+            console.log(result)
+            res.send(result)
+        })
+    })
+    //enviar msg em determinada sala
+    app.post('/enviarmsg/:i/', function(req, res){
+        let i = req.params.i
+        let msg = req.body.texto
+        console.log('abaixoooo')
+        console.log(i)
+        console.log(`${msg}`)
+        
+        let sql1 = `SELECT nome from usuarios where id_usu=${req.session.usuario}`
+        conn.query(sql1, function(err, result){
+            let nome = result[0].nome
+            let sql = `INSERT INTO msgs (id_sala, id_usu, nomeusu, msg) VALUES(${i}, ${req.session.usuario}, '${nome}', '${msg}')`
+            conn.query(sql, function(err, result){
+    
+            })
+        })
 
-
+        res.redirect('/')
     })
 
     //procurar sala

@@ -39,7 +39,7 @@ function logado(v){
         //===============================================
 
         let main = document.getElementById("main")
-        main.style.textAlign = "center"
+        main.style.textAlign = "left"
         
         if(v == "login"){
             main.innerHTML = ""
