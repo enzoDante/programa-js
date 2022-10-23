@@ -101,13 +101,16 @@ function emaillogin(v){
     let ver = em(email)
     if(ver != ""){
         document.getElementById("ee").style.display = "none"
+        if(v==1)
+            return true
     }else{
         document.getElementById("ee").style.display = 'block'
         document.getElementById("ee").innerHTML = "Email inexistente!"
+        if(v==1)
+            return false
     }
 
-    if(v==1)
-        return true
+    
         
     
 }
@@ -115,5 +118,13 @@ function logar(e){
     e.preventDefault()
     let form = document.getElementById("ff")
 
-    
+    let emm = emaillogin(1)
+    let sss = senhaa(1)
+    if(emm && sss){
+        form.submit()
+        console.log("Login será efetuado")
+    }else{
+        console.log('informações incompletas')
+    }
+
 }

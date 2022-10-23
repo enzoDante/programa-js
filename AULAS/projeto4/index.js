@@ -68,7 +68,13 @@ const session = require('express-session')
     })
     app.post('/loginC', function(req, res){
         let email = req.body.email
-        res.send(email)
+        let senha = req.body.senha
+        let sql = `SELECT * FROM usuarios WHERE email='${email}' AND senha='${senha}'`
+        conn.query(sql, function(err, result){
+            console.log(result)
+            res.redirect('/')
+        })
+        //res.send(email)
     })
 
 //verificar valores (ajax)
@@ -80,6 +86,9 @@ const session = require('express-session')
             // console.log(result)
             res.send(result[0])
         })
+    })
+    app.get('/senha/:e/:s', function(req, res){
+        
     })
 
 app.listen(8081, function(){

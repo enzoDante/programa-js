@@ -4,3 +4,4 @@ function fazGet(url){
     request.send()
     return request.responseText
 }
+//enviar via post

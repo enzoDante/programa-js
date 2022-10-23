@@ -3,7 +3,7 @@ function em(email){
     console.log(data)
     if(data != ""){
         let valores = JSON.parse(data)
-        console.log(valores.id_usu)
+        // console.log(valores.id_usu)
         return "Email existente!"
     }
     return ""
