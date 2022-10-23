@@ -10,13 +10,26 @@ function logado(v){
             valores[i].style.display = "none"
         }
         document.getElementsByClassName("cadastrologin")[0].style.display = "none"
-        //======opção de sair da conta-=================
+        //======opção de sair da conta e mostrar nome do usuario-=================
+        let data = fazGet("http://localhost:8081/nome")
+        console.log(data)
+        let p = document.createElement("p")
+        p.setAttribute("id", "nomeusu")
+        p.innerHTML = data
+        nav.appendChild(p)
+
         let a = document.createElement("a")
         a.href = "/sairDestroy"
         a.innerHTML = "Sair"
         a.setAttribute("id", "sair")
         // a.id = "sair"
         nav.appendChild(a)
+        //=========opcao de criar sala=========
+        let a2 = document.createElement("a")
+        a2.href = "/criarSala"
+        a2.innerHTML = "Criar sala"
+        a2.setAttribute("id", "criarsala")
+        nav.appendChild(a2)
         //===============================================
 
         let main = document.getElementById("main")
@@ -52,6 +65,22 @@ function logado(v){
         console.log(valores)
         for(let i=0; i < valores.length; i++){
             valores[i].style.display = "inline-block"
+        }
+        if(v=='index'){
+            let aside = document.getElementById("servers")
+            aside.innerHTML = ""
+
+            let main = document.getElementById("main")
+            main.style.textAlign = "center"
+            main.innerHTML = ""
+            let h1 = document.createElement("h1")
+            h1.innerHTML = "Você não está logado! "
+
+            let a = document.createElement("a")
+            a.href = "/cadastro"
+            a.innerHTML = "Criar conta"
+            h1.appendChild(a)
+            main.appendChild(h1)
         }
         // document.getElementById("sair").style.display = "none"
     }

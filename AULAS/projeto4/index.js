@@ -49,11 +49,9 @@ const session = require('express-session')
                 //===
                 let sql1 = `SELECT * FROM usuarios WHERE email='${email}'`
                 conn.query(sql1, function(err, result, fields){
-                    id = result[0].id_usu
-                    console.log(id)
-                    res.send(id+"  pqqqq ")
-                    
-                    //req.session.usuario =  id
+                    id = result[0].id_usu                   
+                    req.session.usuario = `${id}`
+                    res.redirect('/')
                 })
             }else{
                 res.redirect('/cadastro')
@@ -80,6 +78,14 @@ const session = require('express-session')
     })
 
 //verificar valores (ajax)
+    //retornar nome de usuario
+    app.get('/nome', function(req, res){
+        let sql = `SELECT nome FROM usuarios WHERE id_usu=${req.session.usuario}`
+        conn.query(sql, function(err, result){
+            // console.log(result)
+            res.send(result[0].nome)
+        })
+    })
     //envia o dado dentro da session
     app.get('/logado', function(req, res){
         res.send(req.session.usuario)

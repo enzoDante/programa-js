@@ -54,7 +54,7 @@ h3{
     padding-top: 20px;
     padding-left: 30px;
     padding-bottom: 20px;
-    width: 100%;
+    width: 200px;
     background-color: #f0dfcb;
     transition: linear 200ms;
 }
@@ -79,11 +79,47 @@ main{
     border-left-width: 1px;
     border-radius: 0px;
     border-bottom-right-radius: 5px;
-    overflow: auto;
+    overflow: hidden;
     height: 700px;
     margin: 0;
     width: 1000px;
 }
+#chatmsg{
+    overflow: auto;
+    height: 500px;
+}
+#chatmsg::-webkit-scrollbar{
+    width: 4px;
+    background-color: #b4b4b4;
+    border-radius: 20px;
+}
+#chatmsg::-webkit-scrollbar-thumb{
+    background-color: #797979;
+    border-radius: 20px;
+}
 .comentarios{
     margin-top: 2vh;
+}
+#chat{
+    background-color: #f0dfcb;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: -50px;
+    margin-right: -50px;
+    /* position: fixed; */
+}
+form{
+    padding: 0;
+}
+textarea{
+    display: inline-block;
+    resize: none;
+    width: 500px;
+    height: 100px;
+}
+main button{
+    display: block;
+    position: relative;
+    margin: 10px;
+    float: right;
 }

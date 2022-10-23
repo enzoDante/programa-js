@@ -35,6 +35,11 @@ nav a:hover{
     background-color: azure;
     border-radius: 5px;
 }
+#nomeusu{
+    display: inline-block;
+    font-size: 1.1em;
+    padding: 10px;
+}
 main{
     min-width: 200px;
     max-width: 1200px;
