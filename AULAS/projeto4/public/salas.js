@@ -19,15 +19,15 @@ function ordemsalas(el){
     a1.setAttribute("onclick", `entrarNaSala('${x}', ${el.id_sala})`)
     // a1.href = `/chat/${el.id_sala}`
     
-    let a2 = document.createElement("a")
-    a2.innerHTML = "Sair"
-    x = `/sairchat/${el.id_sala}`
+    // let a2 = document.createElement("a")
+    // a2.innerHTML = "Sair"
+    // x = `/sairchat/${el.id_sala}`
 
-    a2.setAttribute("onclick", `sairdasala('${x}', ${el.id_sala})`)
+    // a2.setAttribute("onclick", `sairdasala('${x}', ${el.id_sala})`)
     // a2.href = `/sairchat/${el.id_sala}`
 
     h3.appendChild(a1)
-    h3.appendChild(a2)
+    // h3.appendChild(a2)
     return h3
 
 }
@@ -89,6 +89,10 @@ function entrarNaSala(x, i){
             p.innerHTML = el.msg
             div.appendChild(h1)
             div.appendChild(p)
+
+            let pp = document.createElement("p")
+            pp.innerHTML = el.dia 
+            div.appendChild(pp)
             main.appendChild(div)
         })
     }

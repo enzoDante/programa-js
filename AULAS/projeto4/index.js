@@ -104,6 +104,12 @@ const session = require('express-session')
     app.post('/enviarmsg/:i/', function(req, res){
         let i = req.params.i
         let msg = req.body.texto
+        let data = new Date()
+        let dia  = data.getDate().toString().padStart(2, '0')
+        let mes  = (data.getMonth()+1).toString().padStart(2, '0') //+1 pois no getMonth Janeiro começa com zero.
+        let ano  = data.getFullYear();
+        let hj = `${dia}/${mes}/${ano}`
+
         console.log('abaixoooo')
         console.log(i)
         console.log(`${msg}`)
@@ -111,12 +117,12 @@ const session = require('express-session')
         let sql1 = `SELECT nome from usuarios where id_usu=${req.session.usuario}`
         conn.query(sql1, function(err, result){
             let nome = result[0].nome
-            let sql = `INSERT INTO msgs (id_sala, id_usu, nomeusu, msg) VALUES(${i}, ${req.session.usuario}, '${nome}', '${msg}')`
+            let sql = `INSERT INTO msgs (id_sala, id_usu, nomeusu, dia, msg) VALUES(${i}, ${req.session.usuario}, '${nome}', '${hj}', '${msg}')`
             conn.query(sql, function(err, result){
     
             })
         })
-
+        
         res.redirect('/')
     })
 
