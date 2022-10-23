@@ -87,8 +87,15 @@ const session = require('express-session')
             res.send(result[0])
         })
     })
-    app.get('/senha/:e/:s', function(req, res){
-        
+    // /:e/:s
+    app.get('/senha/:s/:e', function(req, res){
+        let senha = req.params.s
+        let email = req.params.e  
+        let sql = `SELECT id_usu FROM usuarios WHERE email='${email}' AND senha='${senha}'`
+        conn.query(sql, function(err, result){
+            // console.log(result)
+            res.send(result[0])
+        })
     })
 
 app.listen(8081, function(){

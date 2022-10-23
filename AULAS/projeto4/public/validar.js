@@ -97,23 +97,30 @@ function csenhaa(v){
 //==========login==========
 function emaillogin(v){
     document.getElementById("ee").style.display = 'none'
-    email = document.getElementById("email").value 
-    let ver = em(email)
-    if(ver != ""){
-        document.getElementById("ee").style.display = "none"
-        if(v==1)
-            return true
+    email = document.getElementById("email").value
+    if(email != ""){
+        let ver = em(email)
+        if(ver != ""){
+            document.getElementById("ee").style.display = "none"
+            if(v==1)
+                return true
+        }else{
+            document.getElementById("ee").style.display = 'block'
+            document.getElementById("ee").innerHTML = "Email inexistente!"
+            if(v==1)
+                return false
+        }
+
     }else{
         document.getElementById("ee").style.display = 'block'
-        document.getElementById("ee").innerHTML = "Email inexistente!"
-        if(v==1)
-            return false
+        document.getElementById("ee").innerHTML = "Preenche o campo!"
     }
 
     
         
     
 }
+
 function logar(e){
     e.preventDefault()
     let form = document.getElementById("ff")
@@ -121,7 +128,15 @@ function logar(e){
     let emm = emaillogin(1)
     let sss = senhaa(1)
     if(emm && sss){
-        form.submit()
+        let vas = sen(senha, email)
+        if(vas != ""){
+            document.getElementById("ss").style.display = 'block'
+            document.getElementById("ss").innerHTML = "Senha incorreta!"
+        }else{
+            document.getElementById("ss").style.display = "none"
+        }
+        console.log(vas)
+        //form.submit()
         console.log("Login será efetuado")
     }else{
         console.log('informações incompletas')
