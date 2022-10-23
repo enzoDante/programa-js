@@ -7,15 +7,15 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="logado('login')">
     <header>
         <h1>Login</h1>
     </header>
-    <nav>
+    <nav id="nav">
         <a href="/">Home</a>
-        <a href="/cadastro">Cadastrar</a>
+        <a href="/cadastro" class="cadastrologin">Cadastrar</a>
     </nav>
-    <main>
+    <main id="main">
         <form action="/loginC" method="post" id="ff" autocomplete="off">
             <label for="email">E-mail:</label>
             <input type="email" onkeyup="emaillogin()" name="email" id="email">
@@ -32,6 +32,7 @@
     <script src="ajax.js"></script>
     <script src="verificaremail.js"></script>
     <script src="validar.js"></script>
+    <script src="usuariologado.js"></script>
     
 </body>
 </html>

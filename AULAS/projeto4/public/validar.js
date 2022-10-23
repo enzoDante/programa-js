@@ -115,10 +115,6 @@ function emaillogin(v){
         document.getElementById("ee").style.display = 'block'
         document.getElementById("ee").innerHTML = "Preenche o campo!"
     }
-
-    
-        
-    
 }
 
 function logar(e){
@@ -134,10 +130,9 @@ function logar(e){
             document.getElementById("ss").innerHTML = "Senha incorreta!"
         }else{
             document.getElementById("ss").style.display = "none"
+            form.submit()
+            console.log("Login será efetuado")
         }
-        console.log(vas)
-        //form.submit()
-        console.log("Login será efetuado")
     }else{
         console.log('informações incompletas')
     }

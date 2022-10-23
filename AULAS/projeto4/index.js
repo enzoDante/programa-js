@@ -71,13 +71,20 @@ const session = require('express-session')
         let senha = req.body.senha
         let sql = `SELECT * FROM usuarios WHERE email='${email}' AND senha='${senha}'`
         conn.query(sql, function(err, result){
-            console.log(result)
+            // console.log(result)
+            // console.log(result[0].id_usu)
+            req.session.usuario = `${result[0].id_usu}`
             res.redirect('/')
         })
         //res.send(email)
     })
 
 //verificar valores (ajax)
+    //envia o dado dentro da session
+    app.get('/logado', function(req, res){
+        res.send(req.session.usuario)
+    })
+    //retorna o dado(vazio caso não exista esses dados na tabela)
     app.get('/email/:ema', function(req, res){
         let emaill = req.params.ema
         
@@ -87,7 +94,7 @@ const session = require('express-session')
             res.send(result[0])
         })
     })
-    // /:e/:s
+    //retorna o dado(vazio caso não exista esses dados na tabela)
     app.get('/senha/:s/:e', function(req, res){
         let senha = req.params.s
         let email = req.params.e  
@@ -97,6 +104,17 @@ const session = require('express-session')
             res.send(result[0])
         })
     })
+//destruir sessões
+    //link gerado caso usuário esteja logado, ele poderá sair da conta
+    app.get("/sairDestroy", function(req, res){
+        req.session.destroy()
+        res.redirect('/')
+    })
+    app.get('/destruir', function(req, res){
+        req.session.destroy()
+        res.send("nn sei")
+    })
+
 
 app.listen(8081, function(){
     console.log("Servidor rodando em http://localhost:8081 :)")
