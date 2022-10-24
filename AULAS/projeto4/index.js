@@ -101,9 +101,11 @@ const session = require('express-session')
         })
     })
     //enviar msg em determinada sala
-    app.post('/enviarmsg/:i/', function(req, res){
-        let i = req.params.i
-        let msg = req.body.texto
+    // /:i/
+    app.post('/enviarmsg', function(req, res){
+        let valores = req.body
+        // let i = req.params.i
+        // let msg = req.body.texto
         let data = new Date()
         let dia  = data.getDate().toString().padStart(2, '0')
         let mes  = (data.getMonth()+1).toString().padStart(2, '0') //+1 pois no getMonth Janeiro começa com zero.
@@ -111,19 +113,23 @@ const session = require('express-session')
         let hj = `${dia}/${mes}/${ano}`
 
         console.log('abaixoooo')
-        console.log(i)
-        console.log(`${msg}`)
+        console.log(valores)
+        // console.log(i)
+        // console.log(`${msg}`)
         
         let sql1 = `SELECT nome from usuarios where id_usu=${req.session.usuario}`
         conn.query(sql1, function(err, result){
             let nome = result[0].nome
-            let sql = `INSERT INTO msgs (id_sala, id_usu, nomeusu, dia, msg) VALUES(${i}, ${req.session.usuario}, '${nome}', '${hj}', '${msg}')`
+            let sql = `INSERT INTO msgs (id_sala, id_usu, nomeusu, dia, msg) VALUES(${valores.id}, ${req.session.usuario}, '${nome}', '${hj}', '${valores.msg}')`
             conn.query(sql, function(err, result){
-    
+                let nomehj = {"nome": nome, "data":hj}
+                const valors2 = { ...nomehj, ...valores}
+                console.log(valors2)
+                res.send(valors2)
             })
         })
         
-        res.redirect('/')
+        // res.redirect('/')
     })
 
     //procurar sala

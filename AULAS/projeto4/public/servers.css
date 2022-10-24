@@ -116,6 +116,8 @@ textarea{
     resize: none;
     width: 500px;
     height: 100px;
+    font-size: 1.2em;
+    padding: 5px;
 }
 main button{
     display: block;

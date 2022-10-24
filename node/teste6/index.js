@@ -22,6 +22,9 @@ const conn = require('./bd')
     //Body Parser
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())
+    //nn sei ------------adicionado p receber json
+        app.use(express.json());
+        app.use(express.urlencoded({ extended: false }));
 
 //Rotas
     app.get('/', function(req, res){ //rota principal, pois só tem '/'
@@ -115,6 +118,15 @@ const conn = require('./bd')
             res.redirect('/outro')
         })
         //res.send('form recebido :)<br> nome: '+nome+" "+x)
+    })
+    //testeeee ajax com post======
+    app.post('/testt', function(req, res){
+        let aa = req.body.item
+        console.log(req.body)
+        res.send(aa)
+    })
+    app.get('/tesste', function(req, res){
+        res.sendFile(__dirname + "/front/testeenviar.html")
     })
 
 app.listen(8084, function(){

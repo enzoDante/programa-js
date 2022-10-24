@@ -98,7 +98,7 @@ function entrarNaSala(x, i){
     }
 
     let form = document.getElementById("ff")
-    form.setAttribute("action","/enviarmsg/"+i)
+    // form.setAttribute("action","/enviarmsg/"+i)
 
     let btn = document.getElementById("btnenviarmsg")
     btn.setAttribute("onclick", `enviarmsgg(event,${i})`)
@@ -109,10 +109,10 @@ function enviarmsgg(e, i){
     let form = document.getElementById("ff")
     let msg = document.getElementById("texto").value 
     console.log(msg)
-    form.submit()
+    // form.submit()
     // console.log(i)
-
-    // let data = fazGet(`http://localhost:8081/enviarmsg/${i}/'${msg}'`)
+    ///${i}/'${msg}'
+    fazPost(`http://localhost:8081/enviarmsg`, i, msg)
     // console.log(data)
 
 }
