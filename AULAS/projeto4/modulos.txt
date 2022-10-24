@@ -1,0 +1,34 @@
+npm install express --save
+npm install --save mysql2
+npm install --save body-parser
+npm install express-session --save
+npm install nodemon -g
+
+==========[tabelas mysql]==============
+create database projeto4_web;
+use projeto4_web;
+create table usuarios(
+id_usu int not null primary key auto_increment,
+nome varchar(200) not null,
+email varchar(200) not null,
+senha varchar(400) not null
+);
+create table salas(
+id_sala int not null primary key auto_increment,
+nomes varchar(100) not null,
+id_criador int not null
+);
+
+create table msgs(
+id_msg bigint not null primary key auto_increment,
+id_sala int not null,
+id_usu int not null,
+nomeusu varchar(200),
+dia varchar(200),
+msg text
+);
+
+create table salaxusuario(
+idu int not null,
+ids int not null
+);
