@@ -14,7 +14,8 @@ function fazPost(url, id, msg){
 
 
             let hr = document.createElement("hr")
-            main.appendChild(hr)
+            // main.appendChild(hr)
+            main.insertBefore(hr, main.children[0])
             let div = document.createElement("div")
             div.setAttribute("class", "comentarios")
             let h1 = document.createElement("h1")
@@ -27,7 +28,8 @@ function fazPost(url, id, msg){
             pp.innerHTML = dados.data
             div.appendChild(pp)
 
-            main.appendChild(div)
+            // main.appendChild(div)
+            main.insertBefore(div, main.children[0])
             // document.getElementById("chatmsg").innerHTML += this.responseText +"<br>"
         }
     }

@@ -22,7 +22,7 @@ const session = require('express-session')
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())
 
-//principal
+//principal==========================================================
     app.get('/', function(req, res){
         res.sendFile(__dirname+"/front/index.html")
     })
@@ -30,7 +30,7 @@ const session = require('express-session')
 //variaveis globais
     let sql = "", nome="", email="",senha="", id="", msg=""
 
-//salas
+//salas=========================================================================
     //criar salas======
     app.post('/criarSalaC', function(req,res){
         let nome = req.body.nome
@@ -39,10 +39,11 @@ const session = require('express-session')
             res.redirect('/')
         })
     })
+    //página onde cria as salas
     app.get('/criarSala', function(req, res){
         res.sendFile(__dirname+"/front/criarsala.html")
     })
-    //=====salas onde estou====
+    //=====salas onde estou(mostra todas as salas que entrei)====
     app.get('/minhassalas', function(req, res){
         let where = `id_criador=${req.session.usuario}`
         //SELECT * FROM salas, salaxusuario WHERE ${where}  OR idu=${req.session.usuario}
@@ -64,7 +65,7 @@ const session = require('express-session')
         })
         
     })
-    //entrar em sala
+    //entrar em sala, insere o id do usuario na sala!
     app.get('/entrarSala/:i', function(req, res){
         let i = req.params.i
         //recebe sala do parametro
@@ -91,16 +92,17 @@ const session = require('express-session')
         })
         res.redirect('/')
     })
-    //entra em determinada sala p conversar
+    //entra em determinada sala p conversar(no caso, o id já estava na sala anteriormente)
+    //aqui é p ele entrar na sala e conversar
     app.get('/chat/:i', function(req, res){
         let i = req.params.i
-        let sql = `SELECT * from msgs WHERE id_sala=${i}`
+        let sql = `SELECT * from msgs WHERE id_sala=${i} ORDER BY id_msg DESC`
         conn.query(sql, function(err, result){
-            console.log(result)
+            // console.log(result)
             res.send(result)
         })
     })
-    //enviar msg em determinada sala
+    //enviar msg em determinada sala(conversar com outros q estão na msm sala)
     // /:i/
     app.post('/enviarmsg', function(req, res){
         let valores = req.body
@@ -112,8 +114,8 @@ const session = require('express-session')
         let ano  = data.getFullYear();
         let hj = `${dia}/${mes}/${ano}`
 
-        console.log('abaixoooo')
-        console.log(valores)
+        // console.log('abaixoooo')
+        // console.log(valores)
         // console.log(i)
         // console.log(`${msg}`)
         
@@ -124,7 +126,7 @@ const session = require('express-session')
             conn.query(sql, function(err, result){
                 let nomehj = {"nome": nome, "data":hj}
                 const valors2 = { ...nomehj, ...valores}
-                console.log(valors2)
+                // console.log(valors2)
                 res.send(valors2)
             })
         })
@@ -132,20 +134,21 @@ const session = require('express-session')
         // res.redirect('/')
     })
 
-    //procurar sala
+    //procurar sala (sala criada por alguém)
     app.get('/procurarSalaC/:sa', function(req, res){
         let sa = req.params.sa
         let sql = `SELECT * FROM salas WHERE nomes LIKE '%${sa}%' `
         conn.query(sql, function(err, result){
-            console.log(result)
+            // console.log(result)
             res.send(result)
         })
     })
+    //página html do procurar sala acima!
     app.get('/procurarSala', function(req, res){
         res.sendFile(__dirname+"/front/salas.html")
     })
 
-//cadastro
+//cadastro==========================================================
     app.get('/cadastro', function(req, res){
         res.sendFile(__dirname+"/front/cadastro.html")
     })
@@ -175,7 +178,7 @@ const session = require('express-session')
         
     })
 
-//login
+//login==========================================================
     app.get('/login', function(req, res){
         res.sendFile(__dirname+"/front/login.html")
     })
@@ -192,13 +195,13 @@ const session = require('express-session')
         //res.send(email)
     })
 
-//verificar valores (ajax)
+//verificar valores (ajax)==========================================================
     //retorna sala caso existe
     app.get("/salaexiste/:n", function(req, res){
         let nome = req.params.n
         let sql = `SELECT * FROM salas WHERE nomes='${nome}'`
         conn.query(sql, function(err, result){
-            console.log(result)
+            // console.log(result)
             res.send(result[0])
         })
     })
@@ -235,12 +238,13 @@ const session = require('express-session')
             res.send(result[0])
         })
     })
-//destruir sessões
+//destruir sessões==========================================================
     //link gerado caso usuário esteja logado, ele poderá sair da conta
     app.get("/sairDestroy", function(req, res){
         req.session.destroy()
         res.redirect('/')
     })
+    //somente para testes----------------------
     app.get('/destruir', function(req, res){
         req.session.destroy()
         res.send("nn sei")

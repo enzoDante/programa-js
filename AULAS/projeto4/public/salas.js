@@ -107,7 +107,9 @@ function entrarNaSala(x, i){
 function enviarmsgg(e, i){
     e.preventDefault()
     let form = document.getElementById("ff")
-    let msg = document.getElementById("texto").value 
+    let msg = document.getElementById("texto").value
+    document.getElementById("texto").value = ""
+    document.getElementById("texto").focus()
     console.log(msg)
     // form.submit()
     // console.log(i)
