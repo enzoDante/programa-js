@@ -24,13 +24,13 @@ function logado(v){
         a.setAttribute("id", "sair")
         // a.id = "sair"
         nav.appendChild(a)
-        //=========opcao de criar sala=========
+        //=======================================opcao de criar sala=========
         let a2 = document.createElement("a")
         a2.href = "/criarSala"
         a2.innerHTML = "Criar sala"
         a2.setAttribute("id", "criarsala")
         nav.appendChild(a2)
-        //opcao de procurar sala
+        //=======================================opcao de procurar sala
         let a3 = document.createElement("a")
         a3.href = "/procurarSala"
         a3.innerHTML = "Buscar"
@@ -40,7 +40,7 @@ function logado(v){
 
         let main = document.getElementById("main")
         main.style.textAlign = "left"
-        
+        //=======================================caso a página seja 'login'
         if(v == "login"){
             main.innerHTML = ""
             let h1 = document.createElement("h1")
@@ -52,6 +52,7 @@ function logado(v){
             h1.appendChild(a)
             main.appendChild(h1)
         }else{
+            //=======================================caso seja página 'cadastro'
             if(v == "cadastro"){
                 main.innerHTML = ""
                 let h1 = document.createElement("h1")
@@ -63,12 +64,15 @@ function logado(v){
                 h1.appendChild(a)
                 main.appendChild(h1)
             }else{
+                //=======================================págnia 'salas'
                 if(v=='salas'){
                     document.getElementById("criarsala").style.display = "none"
                 }else{
+                    //=======================================página 'bsalas'
                     if(v== 'bsalas'){
                         document.getElementById("buscarsala").style.display = "none"
                     }else{
+                        //=======================================página principal 'index'
                         if(v=='index'){
                             carregarsalas()
                         }

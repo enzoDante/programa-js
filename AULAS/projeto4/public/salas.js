@@ -1,3 +1,4 @@
+//=======================================verifica se é permitido criar uma sala
 function salaexistente(nome, form){
     let data = fazGet("http://localhost:8081/salaexiste/"+nome)
     console.log(data)
@@ -8,7 +9,7 @@ function salaexistente(nome, form){
         document.getElementById("mm").innerHTML = "Sala existente, digite outro nome!"
     }
 }
-//cada sala será criada
+//=======================================cada sala será criada
 function ordemsalas(el){
     let h3 = document.createElement("h3")
     let a1 = document.createElement("a")
@@ -31,7 +32,7 @@ function ordemsalas(el){
     return h3
 
 }
-//mostra as salas criadas acima
+//=======================================mostra as salas criadas acima
 function carregarsalas(){
     let data = fazGet("http://localhost:8081/minhassalas")
     console.log(data)
@@ -47,7 +48,7 @@ function carregarsalas(){
     }
 }
 
-//=======procurar sala========
+//============================================procurar sala========
 function procurar(){
     let sala = document.getElementById("sa").value 
     let data = fazGet("http://localhost:8081/procurarSalaC/"+sala)
@@ -68,7 +69,7 @@ function procurar(){
         })
     }
 }
-//==========entra em bate papo========
+//===========================================entra em bate papo========
 function entrarNaSala(x, i){
     let data = fazGet(x)
     console.log(data)
@@ -102,19 +103,36 @@ function entrarNaSala(x, i){
 
     let btn = document.getElementById("btnenviarmsg")
     btn.setAttribute("onclick", `enviarmsgg(event,${i})`)
+    //tecla enter no textarea
+    let penter = document.getElementById("texto")
+    penter.setAttribute("onkeypress", `teclaEnter(event, ${i})`)
 
 }
+//tecla ente
+function teclaEnter(e, i){
+    if(e.keyCode === 13)
+        enviarmsgg(e, i)
+}
+//=======================================enviar msg digitada em uma sala
 function enviarmsgg(e, i){
     e.preventDefault()
     let form = document.getElementById("ff")
+
+    let p = document.getElementById("mm")
+    p.style.display = "none"
+
     let msg = document.getElementById("texto").value
-    document.getElementById("texto").value = ""
-    document.getElementById("texto").focus()
-    console.log(msg)
-    // form.submit()
-    // console.log(i)
-    ///${i}/'${msg}'
-    fazPost(`http://localhost:8081/enviarmsg`, i, msg)
-    // console.log(data)
+    if(msg != ""){
+        document.getElementById("texto").value = ""
+        document.getElementById("texto").focus()
+        console.log(msg)
+        // form.submit()
+        // console.log(i)
+        ///${i}/'${msg}'
+        fazPost(`http://localhost:8081/enviarmsg`, i, msg)
+        // console.log(data)
+    }else{
+        p.style.display = "block"
+    }
 
 }
