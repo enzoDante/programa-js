@@ -40,3 +40,8 @@ create table curtidas(
 idusu int not null,
 idmsg int not null
 );
+
+
+////obs p mim
+ainda falta as curtidas (tbm a página p ver as msg mais curtidas) - fazer via ajax (post/get)
+filtro de palavrão, nn sei pq a api piii.js nn funciona :(
