@@ -27,6 +27,10 @@ function fazPost(url, id, msg){
             let pp = document.createElement("p")
             pp.innerHTML = dados.data
             div.appendChild(pp)
+            // let like = document.createElement("a")
+            // like.innerHTML = "Curtir"
+            // like.href = ""
+            // div.appendChild(like) 
 
             // main.appendChild(div)
             main.insertBefore(div, main.children[0])

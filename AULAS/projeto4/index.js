@@ -133,6 +133,20 @@ const session = require('express-session')
         
         // res.redirect('/')
     })
+    //=============curtir comentário=====
+    app.get('/curtirmsg/:idd', function(req, res){
+        let idmsg = req.params.idd
+        let sql = `SELECT * FROM curtidas WHERE idusu=${req.session.usuario} AND idmsg=${idmsg}`
+        conn.query(sql, function(err, result){
+            console.log(result)
+            if(result[0] == ""){
+                let sql1 = `INSERT INTO curtidas (idusu, idmsg) VALUES(${req.session.usuario}, ${idmsg})`
+                conn.query(sql1, function(err, resutl){
+                    req.send('aa')
+                })
+            }
+        })
+    })
 
     //procurar sala (sala criada por alguém)
     app.get('/procurarSalaC/:sa', function(req, res){

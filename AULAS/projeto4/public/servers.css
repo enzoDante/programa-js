@@ -125,3 +125,8 @@ main button{
     margin: 10px;
     float: right;
 }
+.curtir{
+    font-size: 1.1em;
+    color: black;
+    font-weight: bold;
+}

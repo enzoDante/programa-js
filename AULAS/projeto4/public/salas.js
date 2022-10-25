@@ -94,6 +94,13 @@ function entrarNaSala(x, i){
             let pp = document.createElement("p")
             pp.innerHTML = el.dia 
             div.appendChild(pp)
+
+            let like = document.createElement("a")
+            like.innerHTML = "Curtir"
+            like.setAttribute("class", 'curtir')
+            like.href = `/curtirmsg/${el.id_msg}`
+            div.appendChild(like) 
+
             main.appendChild(div)
         })
     }

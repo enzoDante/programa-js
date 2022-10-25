@@ -1,0 +1,30 @@
+{
+  "name": "piii",
+  "version": "4.0.2",
+  "description": "Um avançado filtro de palavrões.",
+  "main": "dist/piii.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "diacritics": "^1.3.0",
+    "escape-string-regexp": "^1.0.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "jasmine": "^2.9.0",
+    "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "build": "npm test && rm -rf dist/* && webpack",
+    "test": "jasmine --config=jasmine.json"
+  },
+  "repository": "piiijs/piii.js",
+  "author": {
+    "name": "Matheus Alves",
+    "email": "theuves@gmail.com"
+  },
+  "license": "MIT"
+}

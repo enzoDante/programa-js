@@ -11,19 +11,22 @@ function logado(v){
         }
         document.getElementsByClassName("cadastrologin")[0].style.display = "none"
         //======opção de sair da conta e mostrar nome do usuario-=================
-        let data = fazGet("http://localhost:8081/nome")
-        console.log(data)
-        let p = document.createElement("p")
-        p.setAttribute("id", "nomeusu")
-        p.innerHTML = data
-        nav.appendChild(p)
-
         let a = document.createElement("a")
         a.href = "/sairDestroy"
         a.innerHTML = "Sair"
         a.setAttribute("id", "sair")
         // a.id = "sair"
-        nav.appendChild(a)
+        // nav.appendChild(a)
+        nav.insertBefore(a, nav.children[0])
+
+        let data = fazGet("http://localhost:8081/nome")
+        console.log(data)
+        let p = document.createElement("p")
+        p.setAttribute("id", "nomeusu")
+        p.innerHTML = data
+        // nav.appendChild(p)
+        nav.insertBefore(p, nav.children[0])
+
         //=======================================opcao de criar sala=========
         let a2 = document.createElement("a")
         a2.href = "/criarSala"

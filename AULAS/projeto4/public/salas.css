@@ -9,9 +9,14 @@ input[type=search], input[type=text]{
     outline: none;
     border-color: black;
 }
+#sa{
+    display: block;
+    margin: auto;
+}
 #salasbusca{
     margin-top: 2vh;
     font-size: 1.2em;
+    text-align: center;
 }
 #salasbusca a{
     color: black;
@@ -20,4 +25,7 @@ input[type=search], input[type=text]{
 }
 #salasbusca a:hover{
     text-decoration: underline;
+}
+#ff{
+    text-align: center;
 }
