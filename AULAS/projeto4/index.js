@@ -139,7 +139,7 @@ const io = require('socket.io')(server)
     })
     //usando o socket io =====chat tempo real
     io.on('connection', socket => {
-        console.log('teste conectado '+socket.id)
+        // console.log('teste conectado '+socket.id)
         //qd usuario enviar uma mensagem, vai carregar aq
         socket.on('sendMessage', data => {
             // console.log(data)
