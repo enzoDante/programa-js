@@ -3,6 +3,9 @@ npm install --save mysql2
 npm install --save body-parser
 npm install express-session --save
 npm install nodemon -g
+--
+npm install socket.io
+npm install ejs --n usarei
 
 npm install --save piii
 npm install --save piii-filters

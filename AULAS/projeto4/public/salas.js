@@ -70,7 +70,9 @@ function procurar(){
     }
 }
 //===========================================entra em bate papo========
+var idDaSala = 0
 function entrarNaSala(x, i){
+    idDaSala = i
     let data = fazGet(x)
     console.log(data)
 
@@ -79,8 +81,8 @@ function entrarNaSala(x, i){
     let valores = JSON.parse(data)
     if(valores){
         valores.forEach(el => {
-            let hr = document.createElement("hr")
-            main.appendChild(hr)
+            // let hr = document.createElement("hr")
+            // main.appendChild(hr)
             let div = document.createElement("div")
             div.setAttribute("class", 'comentarios')
 
@@ -124,6 +126,7 @@ function teclaEnter(e, i){
 function enviarmsgg(e, i){
     e.preventDefault()
     let form = document.getElementById("ff")
+    let main = document.getElementById("chatmsg")
 
     let p = document.getElementById("mm")
     p.style.display = "none"
@@ -132,14 +135,96 @@ function enviarmsgg(e, i){
     if(msg != ""){
         document.getElementById("texto").value = ""
         document.getElementById("texto").focus()
-        console.log(msg)
+        // console.log(msg)
+
+        //inserir visualmente!
+        // let hr = document.createElement("hr")
+        // main.appendChild(hr)
+        let div = document.createElement("div")
+        div.setAttribute("class", 'comentarios')
+
+        let h1 = document.createElement("h1")
+        let nome = fazGet("http://localhost:8081/nome")
+        h1.innerHTML = nome
+        let p = document.createElement("p")
+        p.innerHTML = msg
+        div.appendChild(h1)
+        div.appendChild(p)
+
+        let pp = document.createElement("p")
+        let dataaa = new Date()
+        let dia  = dataaa.getDate().toString().padStart(2, '0')
+        let mes  = (dataaa.getMonth()+1).toString().padStart(2, '0') //+1 pois no getMonth Janeiro começa com zero.
+        let ano  = dataaa.getFullYear();
+        let hj = `${dia}/${mes}/${ano}`
+        pp.innerHTML = hj
+        div.appendChild(pp)
+
+        let like = document.createElement("a")
+        like.innerHTML = "Curtir"
+        like.setAttribute("class", 'curtir')
+        let id_atual = fazGet("http://localhost:8081/idmsg")
+        let valor = JSON.parse(id_atual)
+        let idd = valor.id_msg
+        // console.log(valor.id_msg)
+        like.href = `/curtirmsg/${idd+1}`
+        div.appendChild(like) 
+        main.insertBefore(div, main.children[0])
+        // main.appendChild(div)
+        
+        //parte do socket.io
+
+        let id_usuar = fazGet("http://localhost:8081/idusuarioa")
+        console.log(id_usuar)
+        let obj = {
+            idnovo: idd+1,
+            idsala: i,
+            idusuario: id_usuar,
+            nome: nome,
+            msg: msg,
+            dia: hj
+        }
+        socket.emit('sendMessage', obj)
+
+
+
         // form.submit()
         // console.log(i)
         ///${i}/'${msg}'
-        fazPost(`http://localhost:8081/enviarmsg`, i, msg)
+
+        // fazPost(`http://localhost:8081/enviarmsg`, i, msg)
         // console.log(data)
     }else{
         p.style.display = "block"
     }
-
 }
+
+//carrega as msgs enviadas em tempo real!!!
+socket.on('receivedMessage', function(message){
+    if(message.idsala == idDaSala){
+
+        let main = document.getElementById("chatmsg")
+        let div = document.createElement("div")
+        div.setAttribute("class", 'comentarios')
+    
+        let h1 = document.createElement("h1")
+        h1.innerHTML = message.nome
+        let p = document.createElement("p")
+        p.innerHTML = message.msg
+        div.appendChild(h1)
+        div.appendChild(p)
+    
+        let pp = document.createElement("p")
+        pp.innerHTML = message.dia
+        div.appendChild(pp)
+    
+        let like = document.createElement("a")
+        like.innerHTML = "Curtir"
+        like.setAttribute("class", 'curtir')
+        like.href = `/curtirmsg/${message.idnovo}`
+        div.appendChild(like) 
+        main.insertBefore(div, main.children[0])
+    }
+    // renderMessage(message)
+
+})

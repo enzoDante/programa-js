@@ -10,6 +10,10 @@ const bodyParser = require('body-parser') //permite receber dados de formularios
 const conn = require('./bd')
 //sessoes de login
 const session = require('express-session')
+//socket.io - para atualizar chat em tempo real
+const {socket} = require('socket.io')
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
 //===
 //Config
     //express-session
@@ -133,6 +137,21 @@ const session = require('express-session')
         
         // res.redirect('/')
     })
+    //usando o socket io =====chat tempo real
+    io.on('connection', socket => {
+        console.log('teste conectado '+socket.id)
+        //qd usuario enviar uma mensagem, vai carregar aq
+        socket.on('sendMessage', data => {
+            // console.log(data)
+            let sql = `INSERT INTO msgs (id_sala, id_usu, nomeusu, dia, msg) VALUES(${data.idsala}, ${data.idusuario}, '${data.nome}', '${data.dia}', '${data.msg}')`
+            // console.log(sql)
+            conn.query(sql)
+
+            socket.broadcast.emit('receivedMessage', data)
+        })
+    })
+
+
     //=============curtir comentário=====
     app.get('/curtirmsg/:idd', function(req, res){
         let idmsg = req.params.idd
@@ -252,6 +271,18 @@ const session = require('express-session')
             res.send(result[0])
         })
     })
+    //retorna um id p as msgs
+    app.get('/idmsg', function(req, res){
+        let sql = `select * from msgs order by id_msg DESC`
+        conn.query(sql, function(err, result){
+            // console.log(result[0])
+            res.send(result[0])
+        })
+    })
+    //retorna o id do usuario
+    app.get('/idusuarioa', function(req, res){
+        res.send(req.session.usuario)
+    })
 //destruir sessões==========================================================
     //link gerado caso usuário esteja logado, ele poderá sair da conta
     app.get("/sairDestroy", function(req, res){
@@ -264,7 +295,10 @@ const session = require('express-session')
         res.send("nn sei")
     })
 
-
+/*
 app.listen(8081, function(){
     console.log("Servidor rodando em http://localhost:8081 :)")
-})//porta para rodar a aplicação, deve ser a última linha do código!!!
+})//porta para rodar a aplicação, deve ser a última linha do código!!!*/
+server.listen(8081, function(){
+    console.log("Servidor rodando em http://localhost:8081 :)")
+})

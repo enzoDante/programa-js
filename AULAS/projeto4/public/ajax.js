@@ -5,6 +5,7 @@ function fazGet(url){
     return request.responseText
 }
 //ajax específico p página principal, onde usuário envia uma msg
+/*
 function fazPost(url, id, msg){
     let request = new XMLHttpRequest()
     request.onreadystatechange = function(){
@@ -43,4 +44,4 @@ function fazPost(url, id, msg){
     request.setRequestHeader("Content-type", "application/json");
 
     request.send(JSON.stringify({"id": id, "msg": msg}))
-}
+}*/
