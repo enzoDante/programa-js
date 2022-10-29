@@ -158,10 +158,12 @@ const io = require('socket.io')(server)
         let sql = `SELECT * FROM curtidas WHERE idusu=${req.session.usuario} AND idmsg=${idmsg}`
         conn.query(sql, function(err, result){
             console.log(result)
-            if(result[0] == ""){
+            if(result == ""){
+                console.log(idmsg)
                 let sql1 = `INSERT INTO curtidas (idusu, idmsg) VALUES(${req.session.usuario}, ${idmsg})`
                 conn.query(sql1, function(err, resutl){
-                    req.send('aa')
+                    // req.send('aa')
+                    res.redirect('/')
                 })
             }
         })
@@ -179,6 +181,19 @@ const io = require('socket.io')(server)
     //página html do procurar sala acima!
     app.get('/procurarSala', function(req, res){
         res.sendFile(__dirname+"/front/salas.html")
+    })
+    //página html de msgs mais curtidas
+    app.get('/postscurtidas', function(req, res){
+        res.sendFile(__dirname+'/front/msgCurtidas.html')
+    })
+    //recebe todas as curtidas
+    app.get('/todascurtidas', function(req, res){
+        //select * from curtidas inner join msgs on msgs.id_msg=curtidas.idmsg
+        let sql = `select *, count(idmsg) as lik from curtidas inner join msgs on msgs.id_msg=curtidas.idmsg group by idmsg order by count(idmsg) DESC, idmsg ASC`
+        conn.query(sql, function(err, result){
+            console.log(result)
+            res.send(result)
+        })
     })
 
 //cadastro==========================================================

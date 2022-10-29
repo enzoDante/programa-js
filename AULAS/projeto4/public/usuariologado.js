@@ -39,6 +39,12 @@ function logado(v){
         a3.innerHTML = "Buscar"
         a3.setAttribute("id", "buscarsala")
         nav.appendChild(a3)
+        //========================================opcao de ver posts mais curtidos
+        let a4 = document.createElement("a")
+        a4.href = "/postscurtidas"
+        a4.innerHTML = "Curtidas"
+
+        nav.appendChild(a4)
         //===============================================
 
         let main = document.getElementById("main")
@@ -78,6 +84,10 @@ function logado(v){
                         //=======================================página principal 'index'
                         if(v=='index'){
                             carregarsalas()
+                        }else{
+                            if(v=='msgc'){
+                                curt()
+                            }
                         }
                     }
                 }

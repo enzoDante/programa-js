@@ -69,6 +69,7 @@ function procurar(){
         })
     }
 }
+//carrega as mensagens da sala em q entrou
 //===========================================entra em bate papo========
 var idDaSala = 0
 function entrarNaSala(x, i){
