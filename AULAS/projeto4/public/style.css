@@ -5,7 +5,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 body{
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    /* background-color: #261C1A; */
+    /* background-color: #0E1F26; */
+    background-color: #49555F;
 }
 header{
     min-width: 200px;
@@ -13,13 +16,15 @@ header{
     padding: 20px;
     text-align: center;
     color: white;
-    background-color: #ce6a6a;
+    /* background-color: #ce6a6a; */
+    background-color: #526472;
 }
 nav{
     min-width: 200px;
     min-height: 20px;
     padding: 10px;
-    background-color: #ce6a6a;
+    /* background-color: #ce6a6a; */
+    background-color: #526472;
     color: white;
 }
 nav a{
@@ -31,7 +36,8 @@ nav a{
     transition: linear 200ms;
 }
 nav a:hover{
-    color: #ce6a6a;
+    /* color: #ce6a6a; */
+    color: #526472;
     background-color: azure;
     border-radius: 5px;
 }
@@ -45,6 +51,8 @@ main{
     max-width: 1200px;
     min-height: 500px;
     border-radius: 15px;
+    /* background-color: #403634; */
+    background-color: #7683a5;
     margin: auto;
     margin-top: 5vh;
     box-shadow: 2px 2px 5px black;
@@ -56,7 +64,8 @@ form{
     padding: 20px;
 }
 form a{
-    color: #ce6a6a;
+    /* color: #ce6a6a; */
+    color: #0c2c47;
     font-weight: bold;
     text-decoration: none;
     font-size: 1.1em;
@@ -66,7 +75,8 @@ form a{
 form a:hover{
     border-bottom-style: solid;
     border-width: 5px;
-    border-color: #ce6a6a;
+    /* border-color: #ce6a6a; */
+    border-color: #0c2c47;
 }
 label{
     display: block;
@@ -80,7 +90,11 @@ input[type=text], input[type=password], input[type=email]{
 }
 form .requerido{
     display: none;
-    color: red;
+    color: #ff0000;
+    background-color: white;
+    width: fit-content;
+    margin: auto;
+    font-weight: bold;
     font-size: 1em;
 }
 button{

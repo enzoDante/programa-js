@@ -18,6 +18,7 @@ function ordemsalas(el){
     let x = `/chat/${el.id_sala}`
     
     a1.setAttribute("onclick", `entrarNaSala('${x}', ${el.id_sala})`)
+    h3.setAttribute('id', `${el.id_sala}`)
     // a1.href = `/chat/${el.id_sala}`
     
     // let a2 = document.createElement("a")
@@ -73,6 +74,16 @@ function procurar(){
 //===========================================entra em bate papo========
 var idDaSala = 0
 function entrarNaSala(x, i){
+    let aa = document.querySelector(".ta")
+    if(document.querySelector(".ta"))
+        aa.removeAttribute("class")
+    // alert("testar")
+
+    let salae = document.getElementById(i)
+    // salae.style.backgroundColor = "#93C79E"
+    salae.setAttribute("class", 'ta')
+
+    //abaixo, carrega as msgs da sala
     idDaSala = i
     let data = fazGet(x)
     console.log(data)

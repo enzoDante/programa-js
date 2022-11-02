@@ -20,6 +20,8 @@
     grid-row-gap: 0px;
 }
 aside{
+    /* background-color: #403634; */
+    background-color: #7683a5;
     grid-area: 1 / 2 / 6 / 3;
     width: 230px;
     height: 760px;
@@ -55,11 +57,16 @@ h3{
     padding-left: 30px;
     padding-bottom: 20px;
     width: 200px;
-    background-color: #f0dfcb;
+    /* background-color: #f0dfcb; */
+    /* background-color: #D93D3D; */
+    /* background-color: #2ba1bb; */
+    background-color: #657396;
     transition: linear 200ms;
 }
 h3:hover{
-    background-color: #c7b9a8;
+    /* background-color: #c7b9a8; */
+    /* background-color: #248499; */
+    background-color: #4b4b68;
 }
 aside a{
     color: rgb(238, 22, 22);
@@ -101,7 +108,9 @@ main{
     margin-top: 2vh;
 }
 #chat{
-    background-color: #f0dfcb;
+    /* background-color: #f0dfcb; */
+    /* background-color: #D93D3D; */
+    background-color: #8896bb;
     height: 200px;
     margin-top: 30px;
     margin-left: -50px;
@@ -129,4 +138,13 @@ main button{
     font-size: 1.1em;
     color: black;
     font-weight: bold;
+}
+
+.ta{
+    /* background-color: #7A6C5B; */
+    background-color: #727299;
+}
+.ta a{
+    color: white;
+    border-bottom-style: solid;
 }
