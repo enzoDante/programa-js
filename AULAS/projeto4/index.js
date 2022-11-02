@@ -291,7 +291,12 @@ const io = require('socket.io')(server)
         let sql = `select * from msgs order by id_msg DESC`
         conn.query(sql, function(err, result){
             // console.log(result[0])
-            res.send(result[0])
+            if(result != "")
+                res.send(result[0])
+            else{
+                let idd = {"id_msg": 0}
+                res.send(idd)
+            }
         })
     })
     //retorna o id do usuario

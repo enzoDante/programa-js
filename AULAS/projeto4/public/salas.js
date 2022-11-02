@@ -136,6 +136,9 @@ function enviarmsgg(e, i){
     if(msg != ""){
         document.getElementById("texto").value = ""
         document.getElementById("texto").focus()
+
+        msg = msg.replace(/merda/g, "*").replace(/porra/g, "*").replace(/bosta/g, "*")
+        
         // console.log(msg)
 
         //inserir visualmente!
