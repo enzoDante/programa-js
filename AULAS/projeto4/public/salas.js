@@ -51,23 +51,25 @@ function carregarsalas(){
 
 //============================================procurar sala========
 function procurar(){
-    let sala = document.getElementById("sa").value 
-    let data = fazGet("http://localhost:8081/procurarSalaC/"+sala)
-    // console.log(data)
-    let salasbusca = document.getElementById("salasbusca")
-    salasbusca.innerHTML = ""
-
-    let valores = JSON.parse(data)
-    if(valores){
-        valores.forEach(el => {
-            let h3 = document.createElement("h3")
-            let a1 = document.createElement("a")
-            a1.innerHTML = el.nomes + " | entrar"
-            a1.href = `/entrarSala/${el.id_sala}`
-            h3.appendChild(a1)
-
-            salasbusca.appendChild(h3)
-        })
+    let sala = document.getElementById("sa").value
+    if(sala != ""){
+        let data = fazGet("http://localhost:8081/procurarSalaC/"+sala)
+        // console.log(data)
+        let salasbusca = document.getElementById("salasbusca")
+        salasbusca.innerHTML = ""
+    
+        let valores = JSON.parse(data)
+        if(valores){
+            valores.forEach(el => {
+                let h3 = document.createElement("h3")
+                let a1 = document.createElement("a")
+                a1.innerHTML = el.nomes + " | entrar"
+                a1.href = `/entrarSala/${el.id_sala}`
+                h3.appendChild(a1)
+    
+                salasbusca.appendChild(h3)
+            })
+        }
     }
 }
 //carrega as mensagens da sala em q entrou
@@ -114,12 +116,16 @@ function entrarNaSala(x, i){
             // console.log(data1)
             let valores1 = JSON.parse(data1)
             // console.log(valores1)
+            let im = document.createElement("img")
             if(valores1.idmsg){
-                like.innerHTML = "Remover curtida"
+                // like.innerHTML = "Remover curtida"
+                im.src = "like2.png"
             }else{
-                like.innerHTML = "Curtir"
-
+                // like.innerHTML = "Curtir"
+                im.src = "like.png"
             }
+            im.width = 24
+            like.appendChild(im)
 
             like.setAttribute("class", 'curtir')
             like.href = `/curtirmsg/${el.id_msg}`
@@ -186,7 +192,13 @@ function enviarmsgg(e, i){
         div.appendChild(pp)
 
         let like = document.createElement("a")
-        like.innerHTML = "Curtir"
+
+        let im = document.createElement("img")
+        im.src = "like.png"
+        im.width = 24
+        like.appendChild(im)
+        // like.innerHTML = "Curtir"
+
         like.setAttribute("class", 'curtir')
         let id_atual = fazGet("http://localhost:8081/idmsg")
         let valor = JSON.parse(id_atual)
@@ -200,7 +212,7 @@ function enviarmsgg(e, i){
         //parte do socket.io
 
         let id_usuar = fazGet("http://localhost:8081/idusuarioa")
-        console.log(id_usuar)
+        // console.log(id_usuar)
         let obj = {
             idnovo: idd+1,
             idsala: i,
@@ -244,7 +256,12 @@ socket.on('receivedMessage', function(message){
         div.appendChild(pp)
     
         let like = document.createElement("a")
-        like.innerHTML = "Curtir"
+        let im = document.createElement("img")
+        im.src = "like.png"
+        im.width = 24
+        like.appendChild(im)
+        // like.innerHTML = "Curtir"
+
         like.setAttribute("class", 'curtir')
         like.href = `/curtirmsg/${message.idnovo}`
         div.appendChild(like) 

@@ -157,9 +157,9 @@ const io = require('socket.io')(server)
         let idmsg = req.params.idd
         let sql = `SELECT * FROM curtidas WHERE idusu=${req.session.usuario} AND idmsg=${idmsg}`
         conn.query(sql, function(err, result){
-            console.log(result)
+            // console.log(result)
             if(result == ""){
-                console.log(idmsg)
+                // console.log(idmsg)
                 let sql1 = `INSERT INTO curtidas (idusu, idmsg) VALUES(${req.session.usuario}, ${idmsg})`
                 conn.query(sql1, function(err, resutl){
                     // req.send('aa')
@@ -196,7 +196,7 @@ const io = require('socket.io')(server)
         //select * from curtidas inner join msgs on msgs.id_msg=curtidas.idmsg
         let sql = `select *, count(idmsg) as lik from curtidas inner join msgs on msgs.id_msg=curtidas.idmsg group by idmsg order by count(idmsg) DESC, idmsg ASC`
         conn.query(sql, function(err, result){
-            console.log(result)
+            // console.log(result)
             res.send(result)
         })
     })

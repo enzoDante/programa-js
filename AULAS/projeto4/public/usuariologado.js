@@ -1,11 +1,11 @@
 function logado(v){
     let data = fazGet("http://localhost:8081/logado")
-    console.log(data)
+    // console.log(data)
     //======usuario logado====================
     if(data != ""){
         let nav = document.getElementById("nav")
         let valores = document.getElementsByClassName("cadastrologin")
-        console.log(valores)
+        // console.log(valores)
         for(let i=0; i < valores.length; i++){
             valores[i].style.display = "none"
         }
@@ -20,7 +20,7 @@ function logado(v){
         nav.insertBefore(a, nav.children[0])
 
         let data = fazGet("http://localhost:8081/nome")
-        console.log(data)
+        // console.log(data)
         let p = document.createElement("p")
         p.setAttribute("id", "nomeusu")
         p.innerHTML = data
@@ -97,7 +97,7 @@ function logado(v){
     //===================usuario não está logado--------------------
     else{
         let valores = document.getElementsByClassName("cadastrologin")
-        console.log(valores)
+        // console.log(valores)
         for(let i=0; i < valores.length; i++){
             valores[i].style.display = "inline-block"
         }

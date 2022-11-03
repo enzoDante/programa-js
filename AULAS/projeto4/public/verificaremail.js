@@ -10,7 +10,7 @@ function em(email){
 }
 function sen(senha, email){
     let data = fazGet("http://localhost:8081/senha/"+ senha+"/"+email)
-    console.log(data)
+    // console.log(data)
     if(data != ""){
         return ""
     }
