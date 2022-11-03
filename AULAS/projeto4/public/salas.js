@@ -1,7 +1,7 @@
 //=======================================verifica se é permitido criar uma sala
 function salaexistente(nome, form){
     let data = fazGet("http://localhost:8081/salaexiste/"+nome)
-    console.log(data)
+    // console.log(data)
     if(data == ""){
         form.submit()
     }else{
@@ -36,7 +36,7 @@ function ordemsalas(el){
 //=======================================mostra as salas criadas acima
 function carregarsalas(){
     let data = fazGet("http://localhost:8081/minhassalas")
-    console.log(data)
+    // console.log(data)
     let valores = JSON.parse(data)
 
     let salas = document.getElementById("salas")
@@ -53,7 +53,7 @@ function carregarsalas(){
 function procurar(){
     let sala = document.getElementById("sa").value 
     let data = fazGet("http://localhost:8081/procurarSalaC/"+sala)
-    console.log(data)
+    // console.log(data)
     let salasbusca = document.getElementById("salasbusca")
     salasbusca.innerHTML = ""
 
@@ -86,7 +86,7 @@ function entrarNaSala(x, i){
     //abaixo, carrega as msgs da sala
     idDaSala = i
     let data = fazGet(x)
-    console.log(data)
+    // console.log(data)
 
     let main = document.getElementById("chatmsg")
     main.innerHTML = ""
@@ -110,7 +110,17 @@ function entrarNaSala(x, i){
             div.appendChild(pp)
 
             let like = document.createElement("a")
-            like.innerHTML = "Curtir"
+            let data1 = fazGet("http://localhost:8081/idmsgcurtido/"+el.id_msg)
+            // console.log(data1)
+            let valores1 = JSON.parse(data1)
+            // console.log(valores1)
+            if(valores1.idmsg){
+                like.innerHTML = "Remover curtida"
+            }else{
+                like.innerHTML = "Curtir"
+
+            }
+
             like.setAttribute("class", 'curtir')
             like.href = `/curtirmsg/${el.id_msg}`
             div.appendChild(like) 

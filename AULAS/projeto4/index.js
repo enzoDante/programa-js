@@ -165,6 +165,11 @@ const io = require('socket.io')(server)
                     // req.send('aa')
                     res.redirect('/')
                 })
+            }else{
+                let sql1 = `delete from curtidas where idusu=${req.session.usuario} and idmsg=${idmsg}`
+                conn.query(sql1, function(err, result){
+                    res.redirect('/')
+                })
             }
         })
     })
@@ -296,6 +301,19 @@ const io = require('socket.io')(server)
             else{
                 let idd = {"id_msg": 0}
                 res.send(idd)
+            }
+        })
+    })
+    //retorna valores caso o usuario tenha curtido determinada mensagem
+    app.get('/idmsgcurtido/:md', function(req, res){
+        let md = req.params.md
+        let sql = `select * from curtidas where idusu=${req.session.usuario} and idmsg=${md}`
+        conn.query(sql, function(err, result){
+            if(result != "")//usuario curtiu a msg, irá retornar os ids
+                res.send(result[0])
+            else{
+                let ob = {}
+                res.send(ob)
             }
         })
     })
