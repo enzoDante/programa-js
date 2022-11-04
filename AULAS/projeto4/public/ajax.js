@@ -4,7 +4,7 @@ function fazGet(url){
     request.send()
     return request.responseText
 }
-//ajax específico p página principal, onde usuário envia uma msg
+//ajax específico p página principal, onde usuário envia uma msg (removido)
 /*
 function fazPost(url, id, msg){
     let request = new XMLHttpRequest()
