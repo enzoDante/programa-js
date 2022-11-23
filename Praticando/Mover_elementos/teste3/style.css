@@ -1,0 +1,11 @@
+body{
+    background-color: antiquewhite;
+}
+#meuCanvas{
+    background-color: white;
+    width: 948px;
+    height: 592px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
