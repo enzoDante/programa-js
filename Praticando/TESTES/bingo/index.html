@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="carregar()">
+    <header>
+        <h1>Montar Bingo</h1>
+    </header>
+    <main>
+        <div>
+            <a href="#" onclick="blocos(4)">4x4</a>
+            <a href="#" onclick="blocos(5)">5x5</a>
+            <a href="#" onclick="blocos(6)">6x6</a>
+        </div>
+        <div id="main">
+
+        </div>
+        <div id="config">
+            <input type="checkbox" onchange="config()" name="editar" id="editar">
+            <label for="editar" id="leditar">Editar bingo</label>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #181818;
+}
+header{
+    min-width: 200px;
+    text-align: center;
+    padding: 10px;
+    min-height: 50px;
+    background-color: #313131;
+    color: white;
+}
+
+main{
+    min-width: 200px;
+    max-width: 100%;
+    min-height: 500px;
+    background-color: #1C2025;
+    margin: auto;
+    text-align: center;
+}
+a{
+    color: white;
+    margin: 10px;
+}
+#main{
+    display: inline-block;
+}
+div.blocos{
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 10px;
+    overflow: hidden;
+    background-color: red;
+}
+
+.blocos > textarea{
+    margin: -5px 0px -5px -5px;
+    padding: 10px;
+    width: 110px;
+    height: 110px;
+    font-size: 1em;
+    background-color: #313131;
+    color: white;
+    cursor: pointer;
+}
+
+#config{
+    display: inline-block;
+    position: absolute;
+    margin-left: 100px;
+}
+#config > input[type=checkbox]{
+    display: none;
+}
+label{
+    color: white;
+    font-size: 1.2em;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #181818;
+    cursor: pointer;
+    border-radius: 10px;
+}
