@@ -1,0 +1,1 @@
+- analisando funções e vetores
